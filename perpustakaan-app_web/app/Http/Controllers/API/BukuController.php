@@ -19,8 +19,8 @@ class BukuController extends Controller
 
             "buku" => BukuModel::orderBy("judul")->get()
         ];
-
-        return view('/admin/buku/buku', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        // return view('/admin/buku/buku', $data);
     }
 
     public function kode_buku(){
