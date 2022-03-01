@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Facade\FlareClient\View;
