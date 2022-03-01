@@ -17,7 +17,8 @@ class AnggotaController extends Controller
 
             "anggota" => AnggotaModel::orderBy("nama_anggota")->get()
         ];
-        return view('/admin/anggota/v_anggota', $data);
+       // return view('/admin/anggota/v_anggota', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
     }
 
     public function detail($id_anggota){
@@ -26,7 +27,8 @@ class AnggotaController extends Controller
 
         ];
 
-        return view("/admin/anggota/v_detailanggota", $data);
+        //return view("/admin/anggota/v_detailanggota", $data);
+        
     }
     public function kodeAnggota(){
 

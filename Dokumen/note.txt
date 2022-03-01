@@ -1,0 +1,47 @@
+1. Kode respon klien error (kode 4xx)
+http status code adalah
+© Pinterest.com
+202 succes
+
+a. 400 Bad Request
+Kode ini menunjukkan bahwa server tidak memahami permintaan dikarenakan syntax yang invalid.
+
+b. 401 Unauthorized
+HTTP status code ini adalah kode yang dikirim ketika permintaan tidak terautentifikasi. Sehingga, kamu harus melakukan autentikasi untuk mendapatkan respons yang diminta.
+
+c. 402 Payment Required
+Kode ini masih dalam pengembangan dan baru akan digunakan di masa mendatang.
+
+Tujuan awal pembuatan kode ini adalah menggunakannya untuk sistem pembayaran digital, namun kode status ini sangat jarang digunakan dan tidak ada ketentuan standar.
+
+d. 403 Forbidden
+Kode status ini biasanya muncul ketika kamu membuka sebuah laman yang tidak kamu miliki aksesnya. Berbeda dengan kode status 401, server akan mengidentifikasimu sebagai pengguna.
+
+e. 404 Not Found
+Kode ini adalah HTTP status code yang paling umum ditemukan. Di browser, ini berarti URL tidak dikenali.
+
+Server juga dapat mengirimkan kode respons ini alih-alih 403 untuk menyembunyikan keberadaan sumber daya dari klien yang tidak sah.
+
+f. 408 Request Timeout
+Kode ini dikirim pada koneksi yang tidak aktif oleh beberapa server, bahkan tanpa permintaan sebelumnya oleh klien.
+
+Artinya, server ingin mematikan koneksi yang tidak digunakan ini.
+
+Respons ini digunakan lebih banyak karena beberapa browser, seperti Chrome, Firefox 27+, atau IE9, menggunakan mekanisme pra-koneksi HTTP untuk mempercepat penjelajahan.
+
+Baca Juga: Ini Cara Ampuh Cek Broken Link Situsmu, Mudah dan Gratis!
+2. Kode respon server error (5xx)
+
+© Kinsta.com
+
+a. 500 Internal Server Error
+HTTP status code ini adalah kode yang dikirimkan ketika server mengalami situasi yang tidak diketahui cara menanganinya.
+
+b. 502 Bad Gateway
+Respons kesalahan ini berarti bahwa server, saat bekerja sebagai gateway untuk mendapatkan respons yang diperlukan untuk menangani permintaan, mendapat respons yang tidak valid.
+
+c. 503 Service Unavailable
+Kode ini akan muncul ketika server tidak siap untuk menangani permintaan tersebut. Penyebab umumnya adalah server tidak aktif karena pemeliharaan atau kelebihan beban.
+
+d. 504 Gateway Timeout
+Kode status ini akan muncul saat server bertindak sebagai gateway dan tidak bisa mendapatkan respons tepat waktu.
