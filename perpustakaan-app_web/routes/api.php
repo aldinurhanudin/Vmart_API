@@ -25,4 +25,5 @@ Route::post('/anggota_api/insert', [AnggotaController::class, 'insert']);//->mid
 Route::get('/anggota/edit/{id_anggota}', [AnggotaController::class, 'edit']);//->middleware('admin');
 Route::post('/anggota/update/', [AnggotaController::class, 'update']);//->middleware('admin');
 Route::get('/anggota/delete/{id_anggota}', [AnggotaController::class, 'delete']);//->middleware('admin');
+//cobag
 Route::get('/buku', [BukuController::class, 'index']);

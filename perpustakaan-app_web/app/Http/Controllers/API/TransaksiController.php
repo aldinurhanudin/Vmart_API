@@ -22,7 +22,8 @@ class TransaksiController extends Controller
             "transaksi" => Transaksi::orderBy("id_transaksi", "DESC")->get()
 
         ];
-        return view('/admin/transaksi/v_transaksi', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view('/admin/transaksi/v_transaksi', $data);
 
     }
 
@@ -47,8 +48,8 @@ class TransaksiController extends Controller
     		"data_buku" => BukuModel::get(),
     		"data_anggota" => AnggotaModel::get()
     	];
-
-    	return view("/admin/transaksi/form_peminjaman", $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+    	//return view("/admin/transaksi/form_peminjaman", $data);
     }
 
     public function simpan_peminjaman(Request $req)
@@ -83,8 +84,8 @@ class TransaksiController extends Controller
     		// "denda" => $req->denda,
     		"id_petugas" => $req->id_petugas
     	]);
-
-    	return redirect()->route('transaksi')->with('pesan','data berhasil di tambahkan');
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+    	//return redirect()->route('transaksi')->with('pesan','data berhasil di tambahkan');
     }
 
     public function form_pengembalian()
@@ -98,8 +99,8 @@ class TransaksiController extends Controller
     		"data_buku" => BukuModel::get(),
     		"data_anggota" => AnggotaModel::get()
     	];
-
-        return view("/admin/transaksi/v_detail", $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view("/admin/transaksi/v_detail", $data);
     }
 
     public function update(Request $req){
@@ -114,7 +115,8 @@ class TransaksiController extends Controller
     		// "denda" => $req->denda,
     		"id_petugas" => $req->id_petugas
         ]);
-        return redirect("/transaksi");
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return redirect("/transaksi");
     }
 
     public function bayar_denda($id_transaksi)

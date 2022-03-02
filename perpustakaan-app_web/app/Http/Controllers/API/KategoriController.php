@@ -15,8 +15,8 @@ class KategoriController extends Controller{
         $data =[
             'kategori' => KategoriModel::orderBy("nama_kategori", "ASC")->get()
         ];
-
-        return view('/admin/kategori/kategori', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view('/admin/kategori/kategori', $data);
     }
 
     public function insert(Request $request){
@@ -35,12 +35,14 @@ class KategoriController extends Controller{
         $cek_double = KategoriModel::where(["nama_kategori" => $request->nama_kategori])->count();
 
         if ($cek_double > 0) {
-            return redirect()->back()->with("gagal", "Tidak Boleh Duplikasi Data");
+            return response()->json('Tidak boleh duplicate');
+            //return redirect()->back()->with("gagal", "Tidak Boleh Duplikasi Data");
         }
 
         KategoriModel::create($request->all());
-
-        return redirect()->route('kategori')->with('sukses','data berhasil di tambahkan');
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+    
+        //return redirect()->route('kategori')->with('sukses','data berhasil di tambahkan');
     }
 
     public function edit($id_kategori){
@@ -48,8 +50,11 @@ class KategoriController extends Controller{
             "edit" => KategoriModel::where("id_kategori", $id_kategori)->first(),
             "kategori" => KategoriModel::where("id_kategori", "!=" , $id_kategori)->get()
         ];
-
-        return view("/admin/kategori/edit_kategori", $data);
+        if(is_null($data)){
+            return response()->json('data not found', 404);
+        }
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view("/admin/kategori/edit_kategori", $data);
     }
 
     public function update(Request $request)
@@ -58,13 +63,15 @@ class KategoriController extends Controller{
             "nama_kategori" => $request->nama_kategori
         ]);
 
-        return redirect("/kategori");
+        //return redirect("/kategori");
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+    
     }
 
     public function hapus(Request $request)
     {
         KategoriModel::where("id_kategori", $request->id_kategori)->delete();
-
-        return redirect("/kategori");
+        return response()->json('Program deleted successfully');
+        //return redirect("/kategori");
     }
 }
