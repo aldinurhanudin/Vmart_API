@@ -86,13 +86,17 @@ class AnggotaController extends Controller
     }
 
     public function edit($id_anggota){
+        
         $data = [
             "edit" => AnggotaModel::where("id_anggota", $id_anggota)->first(),
             "anggota" => AnggotaModel::where("id_anggota", "!=" , $id_anggota)->get(),
 
         ];
-
-        return view("/admin/anggota/v_editanggota", $data);
+        if(is_null($data)){
+            return response()->json('data not found', 404);
+        }
+        return response()->json(['messege' => 'request success', 'data' => $data['edit']],200);
+        //return view("/admin/anggota/v_editanggota", $data);
     }
 
     public function update(Request $request)
@@ -125,7 +129,8 @@ class AnggotaController extends Controller
                 'no_hp'=> $request->no_hp,
             ]);
 
-        return redirect("/anggota");
+        //return redirect("/anggota");
+        return response()->json(['messege' => 'program update success', 'data' => $request],200);
     }
 
     public function delete(Request $request)
