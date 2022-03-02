@@ -19,7 +19,7 @@ class UserController extends Controller
 
             "users" => User::orderBy("id", "DESC")->get()
         ];
-        if(auth()->user()->id_role == 1)
+        //if(auth()->user()->id_role == 1)
         return response()->json(['messege' => 'request success', 'data' => $data],200);
        // return view('/admin/petugas/v_petugas', $data);
 
@@ -67,7 +67,7 @@ class UserController extends Controller
             "id_role" => $request->id_role,
             "password" => bcrypt($request->password)
         ]);
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return response()->json(['messege' => 'request success'],200);
         //return redirect()->route('petugas')->with('pesan','data berhasil di tambahkan');
     }
 
@@ -78,8 +78,8 @@ class UserController extends Controller
             "users" => User::where("id", "!=" , $id)->get(),
             //"kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
-
-        return view("/admin/petugas/v_editpetugas", $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view("/admin/petugas/v_editpetugas", $data);
     }
 
     public function update(Request $request){
