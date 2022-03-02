@@ -20,7 +20,8 @@ class UserController extends Controller
             "users" => User::orderBy("id", "DESC")->get()
         ];
         if(auth()->user()->id_role == 1)
-        return view('/admin/petugas/v_petugas', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+       // return view('/admin/petugas/v_petugas', $data);
 
     }
 
@@ -35,7 +36,8 @@ class UserController extends Controller
         $data = [
             "roles" => Role::orderBy("nama", "DESC")->get()
         ];
-        return view('/admin/petugas/v_addpetugas', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view('/admin/petugas/v_addpetugas', $data);
     }
 
     public function insert(Request $request){
@@ -65,8 +67,8 @@ class UserController extends Controller
             "id_role" => $request->id_role,
             "password" => bcrypt($request->password)
         ]);
-
-        return redirect()->route('petugas')->with('pesan','data berhasil di tambahkan');
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return redirect()->route('petugas')->with('pesan','data berhasil di tambahkan');
     }
 
     public function edit($id){
@@ -113,15 +115,15 @@ class UserController extends Controller
         //     "password" => hash::make($request->password),
         // ];
         // DB::table('users')->insert($data);
-
-        return redirect()->route('petugas')->with('pesan','data berhasil di tambahkan');
+        return response()->json(['messege' => 'request success', 'data' => $request],200);
+        //return redirect()->route('petugas')->with('pesan','data berhasil di tambahkan');
     }
 
     public function delete(Request $request)
     {
         User::where("id", $request->id)->delete();
 
-        return redirect()->route('petugas')->with('pesan','data berhasil di hapus');
+        return response()->json('Program deleted successfully');
     }
 
 

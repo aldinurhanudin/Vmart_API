@@ -13,15 +13,16 @@ class RoleController extends Controller
 
             "roles" => Role::orderBy("nama")->get()
         ];
-
-        return view('/admin/role/role', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view('/admin/role/role', $data);
     }
 
     public function add(){
         $data = [
             "roles" => Role::orderBy("nama", "DESC")->get()
         ];
-        return view('/admin/role/addrole', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return view('/admin/role/addrole', $data);
     }
 
     public function insert(Request $request){
@@ -40,12 +41,12 @@ class RoleController extends Controller
         $cek_double = Role::where(["nama" => $request->nama])->count();
 
         if ($cek_double > 0) {
-            return redirect()->back()->with("gagal", "Tidak Boleh Duplikasi Data");
+            return response()->json("Tidak Boleh Duplikasi Data");
         }
 
         Role::create($request->all());
-
-        return redirect()->with('sukses','data berhasil di tambahkan');
+        return response()->json(['messege' => 'request success', 'data' => $request],200);
+        //return redirect()->with('sukses','data berhasil di tambahkan');
     }
 
     public function edit($id_role){
@@ -53,8 +54,12 @@ class RoleController extends Controller
             "edit" => Role::where("id_role", $id_role)->first(),
             "roles" => Role::where("id_role", "!=" , $id_role)->get()
         ];
-
-        return view("/admin/role/editrole", $data);
+        if(is_null($data)){
+            return response()->json('data not found', 404);
+        }
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return response()->json(['messege' => 'request success', 'data' => $request],200);
+        //return view("/admin/role/editrole", $data);
     }
 
     public function update(Request $request)
@@ -62,14 +67,14 @@ class RoleController extends Controller
         Role::where("id_role", $request->id_role)->update([
             "nama" => $request->nama,
         ]);
-
-        return redirect("/role");
+        return response()->json(['messege' => 'request success', 'data' => $request],200);
+        //return redirect("/role");
     }
 
     public function hapus(Request $request)
     {
         ROle::where("id_role", $request->id_role)->delete();
-
-        return redirect("/role");
+        return response()->json(['messege' => 'request success', 'data' => $request],200);
+        //return redirect("/role");
     }
 }

@@ -19,8 +19,9 @@ class BukuController extends Controller
 
             "buku" => BukuModel::orderBy("judul")->get()
         ];
+
+        //return view('/admin/buku/buku', $data);
         return response()->json(['messege' => 'request success', 'data' => $data],200);
-        // return view('/admin/buku/buku', $data);
     }
 
     public function kode_buku(){
@@ -69,8 +70,9 @@ class BukuController extends Controller
         // }
 
         BukuModel::create($request->all());
-
-        return redirect()->route('buku')->with('pesan','data berhasil di tambahkan');
+        
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+       // return redirect()->route('buku')->with('pesan','data berhasil di tambahkan');
     }
 
     public function add(){
@@ -78,7 +80,8 @@ class BukuController extends Controller
             "kode" => $this->Kode_buku(),
             "kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
-        return view('/admin/buku/tambah_buku', $data);
+        //return view('/admin/buku/tambah_buku', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data['kode'],['kategori']],200);
     }
 
     public function edit($id_buku){
@@ -87,8 +90,11 @@ class BukuController extends Controller
             "buku" => BukuModel::where("id_buku", "!=" , $id_buku)->get(),
             "kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
-
-        return view("/admin/buku/edit_buku", $data);
+        if(is_null($data)){
+            return response()->json('data not found', 404);
+        }
+        return response()->json(['messege' => 'request success', 'data' => $data['edit']],200);
+        //return view("/admin/buku/edit_buku", $data);
     }
 
     public function update(Request $request)
@@ -125,14 +131,16 @@ class BukuController extends Controller
                 'stok'=> $request->stok,
             ]);
 
-        return redirect("/buku");
+        //return redirect("/buku");
+        return response()->json(['messege' => 'request success', 'data' => $request],200);
     }
 
     public function hapus(Request $request)
     {
         BukuModel::where("id_buku", $request->id_buku)->delete();
-
-        return redirect()->route('buku')->with('pesan','data berhasil di hapus');
+        
+        return response()->json('Program deleted successfully');
+        //return redirect()->route('buku')->with('pesan','data berhasil di hapus');
     }
 
     public function detail($id_buku){
@@ -140,7 +148,11 @@ class BukuController extends Controller
             "buku" => BukuModel::where("id_buku", $id_buku)->first(),
             "kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
+        if(is_null($data)){
+            return response()->json('data not found', 404);
+        }
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
 
-        return view("/admin/buku/detail_buku", $data);
+        //return view("/admin/buku/detail_buku", $data);
     }
 }

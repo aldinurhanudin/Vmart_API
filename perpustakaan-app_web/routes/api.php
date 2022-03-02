@@ -20,5 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/anggota', [AnggotaController::class, 'index']);
+//Route::get('/anggota/add', [AnggotaController::class, 'add']);//->middleware('admin');
+Route::post('/anggota_api/insert', [AnggotaController::class, 'insert']);//->middleware('admin');
+Route::get('/anggota/edit/{id_anggota}', [AnggotaController::class, 'edit']);//->middleware('admin');
+Route::post('/anggota/update/', [AnggotaController::class, 'update']);//->middleware('admin');
+Route::get('/anggota/delete/{id_anggota}', [AnggotaController::class, 'delete']);//->middleware('admin');
+//cobag
 Route::get('/buku', [BukuController::class, 'index']);
-// lanutan yang diatas ->name('buku')->middleware('admin')

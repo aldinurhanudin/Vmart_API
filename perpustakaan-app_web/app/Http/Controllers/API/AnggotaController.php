@@ -28,7 +28,7 @@ class AnggotaController extends Controller
         ];
 
         //return view("/admin/anggota/v_detailanggota", $data);
-        
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
     }
     public function kodeAnggota(){
 
@@ -48,7 +48,8 @@ class AnggotaController extends Controller
         $data = [
             "kode" => $this->kodeAnggota(),
         ];
-        return view('/admin/anggota/v_addanggota',$data);
+        //return view('/admin/anggota/v_addanggota',$data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
     }
 
     public function insert(Request $request){
@@ -79,17 +80,23 @@ class AnggotaController extends Controller
 
         AnggotaModel::create($request->all());
 
-        return redirect()->route('anggota')->with('pesan','data berhasil di tambahkan');
+        //return redirect()->route('anggota')->with('pesan','data berhasil di tambahkan');
+        //return response()->json(['Program created successfully.', new ProgramResource($program)]);
+        return response()->json(['messege' => 'created success', 'data' => $request],200);
     }
 
     public function edit($id_anggota){
+        
         $data = [
             "edit" => AnggotaModel::where("id_anggota", $id_anggota)->first(),
             "anggota" => AnggotaModel::where("id_anggota", "!=" , $id_anggota)->get(),
 
         ];
-
-        return view("/admin/anggota/v_editanggota", $data);
+        if(is_null($data)){
+            return response()->json('data not found', 404);
+        }
+        return response()->json(['messege' => 'request success', 'data' => $data['edit']],200);
+        //return view("/admin/anggota/v_editanggota", $data);
     }
 
     public function update(Request $request)
@@ -122,14 +129,16 @@ class AnggotaController extends Controller
                 'no_hp'=> $request->no_hp,
             ]);
 
-        return redirect("/anggota");
+        //return redirect("/anggota");
+        return response()->json(['messege' => 'program update success', 'data' => $request],200);
     }
 
     public function delete(Request $request)
     {
         AnggotaModel::where("id_anggota", $request->id_anggota)->delete();
 
-        return redirect()->route('anggota')->with('pesan','data berhasil di hapus');
+        //return redirect()->route('anggota')->with('pesan','data berhasil di hapus');
+        return response()->json('Program deleted successfully');
     }
 
     // public function detail($id_anggota){
