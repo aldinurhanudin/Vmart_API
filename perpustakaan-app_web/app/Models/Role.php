@@ -15,6 +15,6 @@ class Role extends Model
 
     public function getPetugas()
     {
-        return $this->hasMany("App\Models\PetugasModel", "id_role", "id_role'");
+        return $this->hasOne("App\Models\PetugasModel", "id_role", "id_role'");
     }
 }

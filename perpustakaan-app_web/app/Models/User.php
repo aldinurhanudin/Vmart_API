@@ -41,6 +41,8 @@ class User extends Authenticatable
 
     public function getRole()
     {
-        return $this->belongsTo("App\Models\Role", "id_role", "id_role");
+        return $this->hasOne("App\Models\Role", "id_role", "id_role");
     }
+
+
 }

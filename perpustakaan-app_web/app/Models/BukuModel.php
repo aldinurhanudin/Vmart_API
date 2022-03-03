@@ -21,6 +21,6 @@ class BukuModel extends Model
         // SELECT * FROM buku JOIN kategori ON buku.id_kategori = kategori.id_kategori
 
         // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
-        return $this->belongsTo("App\Models\KategoriModel", "id_kategori", "id_kategori");
+        return $this->hasOne("App\Models\KategoriModel", "id_kategori", "id_kategori");
     }
 }

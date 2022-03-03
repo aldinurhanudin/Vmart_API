@@ -98,6 +98,15 @@
                             @error('stok')
                             {{ $message }}
                             @enderror
+                        </div>  
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Foto</label>
+                        <input type="file" class="form-control" name="foto" id='foto' placeholder="Stok" value="{{ old('foto') }}">
+                        <div class="text-danger">
+                            @error('foto')
+                            {{ $message }}
+                            @enderror
                         </div>
                     </div>
 

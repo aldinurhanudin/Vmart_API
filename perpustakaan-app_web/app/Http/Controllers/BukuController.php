@@ -52,7 +52,7 @@ class BukuController extends Controller
 
         ];
 
-        $this->validate($request, [
+        $validateData = $this->validate($request, [
             'kode_buku' => 'required|unique:buku,kode_buku|min:4|max:7',
             'judul' => 'required',
             'pengarang' => 'required',
@@ -60,7 +60,14 @@ class BukuController extends Controller
             'penerbit' => 'required',
             'id_kategori' => 'required',
             'stok' => 'required',
+            'foto' => 'required',
         ], $message);
+
+        if ($request->file("foto")) {
+
+            $validateData['foto'] = $request->file("foto")->store("image");
+
+        }
 
         // $cek_double = BukuModel::where(["nama_kategori" => $request->nama_kategori])->count();
 
@@ -68,7 +75,7 @@ class BukuController extends Controller
         //     return redirect()->back()->with("gagal", "Tidak Boleh Duplikasi Data");
         // }
 
-        BukuModel::create($request->all());
+        BukuModel::create($validateData);
 
         return redirect()->route('buku')->with('pesan','data berhasil di tambahkan');
     }
@@ -114,7 +121,7 @@ class BukuController extends Controller
                 'penerbit' => 'required',
                 'stok' => 'required',
             ], $message);
-
+            
             BukuModel::where("id_buku", $request->id_buku)->update([
                 "kode_buku" => $request->kode_buku,
                 "judul" => $request->judul,

@@ -15,7 +15,7 @@
 @section('content')
 <p><a href="/buku" class="btn btn-success tbn-sm">Kembali</a></p>
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-6">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Data @yield('title')</h3>
@@ -23,38 +23,8 @@
 
             </div>
             <!-- /.box-header -->
-            {{-- <div class="box-body table-responsive no-padding">
-                <table class="table">
-                    <tr>
-                        <th>Kode Buku</th>
-                        <th style="width:30px">:</th>
-                        <th>{{ $buku->kode_buku }}</th>
-                    </tr>
-                    <tr>
-                        <th>Judul</th>
-                        <th style="width:30px">:</th>
-                        <th>{{ $buku->judul }}</th>
-                    </tr>
-                    <tr>
-                        <th>Pengarang</th>
-                        <th style="width:30px">:</th>
-                        <th>{{ $buku->pengarang }}</th>
-                    </tr>
-                    <tr>
-                        <th>Tahun Terbit</th>
-                        <th style="width:30px">:</th>
-                        <th>{{ $buku->tahun_terbit }}</th>
-                    </tr>
-                    <tr>
-                        <th>Penerbit</th>
-                        <th style="width:30px">:</th>
-                        <th>{{ $buku->penerbit }}</th>
-                    </tr>
-
-                </table>
-            </div> --}}
-            <form role="form">
-
+            
+                
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Kode buku</label>
@@ -84,22 +54,7 @@
                         </select>
                     </div>
 
-                    {{-- <div class="form-group">
-                        <label for="exampleInputPassword1">Kategori</label>
-                        <select class="form-control" name="id_kategori">
-                            <option></option>
-                            @foreach($kategori as $k)
-                                <option value="{{ $k->id_kategori }}">
-                                    {{ $k->nama_kategori }}
-                                </option>
-                            @endforeach
-                        </select>
-                        <div class="text-danger">
-                            @error('pengarang')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                    </div> --}}
+                    
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">Pengarang</label>
@@ -116,13 +71,19 @@
                         <input type="text" class="form-control"  value="{{ $buku->penerbit }}" readonly>
 
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Foto</label>
+                        <br>
+                        <!-- <input type="text" class="form-control"  value="{{ $buku->penerbit }}" readonly> -->
+                        <img src="{{ url('storage/'.$buku->foto) }}" width='150px'>
+                    </div>
 
 
                 </div>
                 <!-- /.box-body -->
 
 
-            </form>
+            
             <!-- /.box-body -->
         </div>
         <!-- /.box -->

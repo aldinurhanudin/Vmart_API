@@ -102,6 +102,16 @@
                     @enderror
                 </div>
               </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Foto</label>
+                <input type="file" class="form-control" name="foto" placeholder="Stok" value="{{ $edit->foto }}">
+                <div class="text-danger">
+                  @error('foto')
+                  {{ $message }}
+                    @enderror
+                </div>
+                <img src="{{ url('storage/'.$edit->foto) }}" width='150px'>
+              </div>
 
 
           </div>

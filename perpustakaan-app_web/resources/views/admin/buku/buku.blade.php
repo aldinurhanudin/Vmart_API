@@ -77,6 +77,7 @@
                             <th>Penerbit</th>
                             <th>Stok</th>
                             <th>Stok Terbaru</th>
+                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -96,7 +97,15 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $data->kode_buku}}
                             </td>
-                            <td>{{ $data->getKategori->nama_kategori }}</td>
+                            <td>
+                                @if(empty($data->getKategori->nama_kategori))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ $data->getKategori->nama_kategori }}
+                                @endif
+                            </td>
                             <td>{{ $data->judul }}</td>
                             <td>{{ $data->pengarang }}</td>
                             <td>{{ $data->tahun_terbit }}</td>
@@ -104,6 +113,7 @@
 
                             <td>{{ $data->stok }}</td>
                             <td>{{ $stok_terbaru }}</td>
+                            <td><img src="{{ url('storage/'.$data->foto) }}" width='150px'></td>
 
                             @if(auth()->user()->id_role == 1)
                             <td>

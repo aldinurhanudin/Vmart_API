@@ -16,7 +16,7 @@ class KategoriModel extends Model{
 
     public function getBuku()
     {
-        return $this->hasMany("App\Models\BukuModel", "id_kategori", "id_kategori");
+        return $this->hasOne("App\Models\BukuModel", "id_kategori", "id_kategori");
     }
 
 }

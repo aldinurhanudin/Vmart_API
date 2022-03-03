@@ -75,8 +75,22 @@
             <tr>
               <td class="text-center">{{ $no++ }}</td>
               <td class="text-center">{{ $data->kode_transaksi}}</td>
-              <td>{{ $data->getBuku->judul}}</td>
-              <td>{{ $data->getAnggota->nama_anggota}}</td>
+              <td> @if(empty($data->getBuku->judul))
+                <i>
+                    <b>NULL</b>
+                </i>
+                @else
+                {{ $data->getBuku->judul }}
+                @endif</td>
+              <td>
+                  @if(empty($data->getAnggota->nama_anggota))
+                  <i>
+                    <b>NULL</b>
+                </i>
+                  @else
+                    {{$data->getAnggota->nama_anggota}}
+                  @endif
+              </td>
               <td class="text-center">{{ $data->tanggal_pinjam}}</td>
               <td class="text-center">{{ $data->tanggal_kembali }}</td>
               <td class="text-center">
@@ -134,10 +148,18 @@
               @elseif(auth()->user()->id_role == 1)
 
               <td>
-
-                {{ $data->getUser->name}}
+                  @if(empty($data->getUser->name))
+                  <i>
+                    <b>NULL</b>
+                </i>
+                  @else
+                    {{$data->getUser->name}}
+                  @endif
               </td>
                 <td>
+                    <a href="/transaksi/detail/{{ $data->id_transaksi }}" class="btn btn-primary btn-sm">
+                        Detail
+                      </a>
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $data->id_transaksi }}">
                     <i class="fa fa-trash"></i>
                     </button>
@@ -155,8 +177,6 @@
       </div>
       <!-- /.box -->
       {{-- @foreach ( $users as $data)
-
-
       <div class="modal modal-danger fade" id="delete{{ $data->id }}">
         <div class="modal-dialog modal-sm">
           <div class="modal-content">
@@ -272,10 +292,8 @@
         $("#cek1").on('click', function() {
             let tglm = $("input[name='tglm']").val().trim();
             let tgls = $("input[name='tgls']").val().trim();
-
             let empTable = document.getElementById("dataTable").getElementsByTagName("tbody")[0];
             empTable.innerHTML = "";
-
             $.ajax({
                 url: '/transaksi/rekap',
                 type: 'post',
@@ -289,7 +307,6 @@
                     let tglsCell = NewRow.insertCell(1);
                     let jumlahCell = NewRow.insertCell(2);
                     let dendaCell = NewRow.insertCell(3);
-
                     tglmCell.innerHTML = tglm;
                     tglsCell.innerHTML = tgls;
                     jumlahCell.innerHTML = response.jumlah;
@@ -300,4 +317,3 @@
     })
 </script>
 @endsection
-

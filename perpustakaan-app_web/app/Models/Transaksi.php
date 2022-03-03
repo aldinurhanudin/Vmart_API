@@ -18,7 +18,7 @@ class Transaksi extends Model
         // SELECT * FROM buku JOIN kategori ON buku.id_kategori = kategori.id_kategori
 
         // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
-        return $this->belongsTo("App\Models\BukuModel", "kode_buku", "kode_buku");
+        return $this->hasOne("App\Models\BukuModel", "kode_buku", "kode_buku");
     }
 
     public function getAnggota()
@@ -26,7 +26,7 @@ class Transaksi extends Model
         // SELECT * FROM buku JOIN kategori ON buku.id_kategori = kategori.id_kategori
 
         // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
-        return $this->belongsTo("App\Models\AnggotaModel", "id_anggota", "id_anggota");
+        return $this->hasOne("App\Models\AnggotaModel", "id_anggota", "id_anggota");
     }
 
     public function getUser()
@@ -34,6 +34,6 @@ class Transaksi extends Model
         // SELECT * FROM buku JOIN kategori ON buku.id_kategori = kategori.id_kategori
 
         // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
-        return $this->belongsTo("App\Models\User", "id_petugas", "id");
+        return $this->hasOne("App\Models\User", "id", "id_petugas");
     }
 }
