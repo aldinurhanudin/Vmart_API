@@ -24,7 +24,7 @@
             <form role="form" action="/role/update" method="POST" enctype="multipart/form-data">
                 <div class="box-body">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $edit->id }}">
+                    <input type="hidden" name="id_role" value="{{ $edit->id_role }}">
                     <div class="form-group">
                         <label for="">Nama</label>
                         <input type="text" class="form-control"  name="nama" placeholder="Masukan nama" value="{{ $edit->nama }}">

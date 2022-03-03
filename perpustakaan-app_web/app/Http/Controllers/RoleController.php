@@ -34,18 +34,18 @@ class RoleController extends Controller
         ];
 
         $this->validate($request, [
-            "nama" => "required|min:4"
+            "nama" => "required"
         ], $message);
 
         $cek_double = Role::where(["nama" => $request->nama])->count();
 
         if ($cek_double > 0) {
-            return redirect()->back()->with("gagal", "Tidak Boleh Duplikasi Data");
+            return redirect('/role')->back()->with("gagal", "Tidak Boleh Duplikasi Data");
         }
 
         Role::create($request->all());
 
-        return redirect()->with('sukses','data berhasil di tambahkan');
+        return redirect('/role')->with('sukses','data berhasil di tambahkan');
     }
 
     public function edit($id_role){
