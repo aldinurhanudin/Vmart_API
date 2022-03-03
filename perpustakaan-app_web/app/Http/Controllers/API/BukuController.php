@@ -70,8 +70,8 @@ class BukuController extends Controller
         // }
 
         BukuModel::create($request->all());
-        
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+
+        return response()->json(['messege' => 'request success'],200);
        // return redirect()->route('buku')->with('pesan','data berhasil di tambahkan');
     }
 
@@ -93,6 +93,7 @@ class BukuController extends Controller
         if(is_null($data)){
             return response()->json('data not found', 404);
         }
+
         return response()->json(['messege' => 'request success', 'data' => $data['edit']],200);
         //return view("/admin/buku/edit_buku", $data);
     }
@@ -132,13 +133,13 @@ class BukuController extends Controller
             ]);
 
         //return redirect("/buku");
-        return response()->json(['messege' => 'request success', 'data' => $request],200);
+        return response()->json(['messege' => 'request success',],200);
     }
 
     public function hapus(Request $request)
     {
         BukuModel::where("id_buku", $request->id_buku)->delete();
-        
+
         return response()->json('Program deleted successfully');
         //return redirect()->route('buku')->with('pesan','data berhasil di hapus');
     }
