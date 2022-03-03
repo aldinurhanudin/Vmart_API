@@ -24,7 +24,7 @@ class HomeController extends Controller
         ];
 
         //dd($data['jumlah_data_denda']);
-
-        return view('v_home', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        // return view('v_home', $data);
     }
 }

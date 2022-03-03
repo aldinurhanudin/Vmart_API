@@ -20,7 +20,9 @@ class UserController extends Controller
             "users" => User::orderBy("id", "DESC")->get()
         ];
         if(auth()->user()->id_role == 1)
-        return view('/admin/petugas/v_petugas', $data);
+
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        // return view('/admin/petugas/v_petugas', $data);
 
     }
 
@@ -35,7 +37,9 @@ class UserController extends Controller
         $data = [
             "roles" => Role::orderBy("nama", "DESC")->get()
         ];
-        return view('/admin/petugas/v_addpetugas', $data);
+
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        // return view('/admin/petugas/v_addpetugas', $data);
     }
 
     public function insert(Request $request){
@@ -77,7 +81,8 @@ class UserController extends Controller
             //"kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
 
-        return view("/admin/petugas/v_editpetugas", $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        // return view("/admin/petugas/v_editpetugas", $data);
     }
 
     public function update(Request $request){

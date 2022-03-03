@@ -84,7 +84,7 @@ class TransaksiController extends Controller
     		// "denda" => $req->denda,
     		"id_petugas" => $req->id_petugas
     	]);
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return response()->json(['messege' => 'request success'],200);
     	//return redirect()->route('transaksi')->with('pesan','data berhasil di tambahkan');
     }
 
@@ -115,7 +115,7 @@ class TransaksiController extends Controller
     		// "denda" => $req->denda,
     		"id_petugas" => $req->id_petugas
         ]);
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return response()->json(['messege' => 'request success'],200);
         //return redirect("/transaksi");
     }
 
@@ -124,8 +124,8 @@ class TransaksiController extends Controller
         $data = [
             "detail" => Transaksi::where("id_transaksi", $id_transaksi)->first()
         ];
-
-        return view("/admin/transaksi/bayar_denda", $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        // return view("/admin/transaksi/bayar_denda", $data);
     }
 
     public function pengembalian(Request $request)
@@ -149,7 +149,8 @@ class TransaksiController extends Controller
     {
         Transaksi::where("id_transaksi", $request->id_transaksi)->delete();
 
-        return redirect()->route('transaksi')->with('pesan','data berhasil di hapus');
+        return response()->json('Program deleted successfully');
+        // return redirect()->route('transaksi')->with('pesan','data berhasil di hapus');
     }
 
     // public function cetakForm(){

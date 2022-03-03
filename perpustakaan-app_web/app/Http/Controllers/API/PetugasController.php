@@ -18,6 +18,7 @@ class PetugasController extends Controller
         $data =[
             'users' => $this->PetugasModel->allData(),
         ];
+
         return view('v_petugas', $data);
     }
 

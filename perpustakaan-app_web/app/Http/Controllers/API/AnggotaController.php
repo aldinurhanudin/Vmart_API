@@ -82,11 +82,11 @@ class AnggotaController extends Controller
 
         //return redirect()->route('anggota')->with('pesan','data berhasil di tambahkan');
         //return response()->json(['Program created successfully.', new ProgramResource($program)]);
-        return response()->json(['messege' => 'created success', 'data' => $request],200);
+        return response()->json(['messege' => 'created success'],200);
     }
 
     public function edit($id_anggota){
-        
+
         $data = [
             "edit" => AnggotaModel::where("id_anggota", $id_anggota)->first(),
             "anggota" => AnggotaModel::where("id_anggota", "!=" , $id_anggota)->get(),
@@ -130,7 +130,7 @@ class AnggotaController extends Controller
             ]);
 
         //return redirect("/anggota");
-        return response()->json(['messege' => 'program update success', 'data' => $request],200);
+        return response()->json(['messege' => 'program update success'],200);
     }
 
     public function delete(Request $request)

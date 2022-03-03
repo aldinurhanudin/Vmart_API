@@ -40,8 +40,8 @@ class KategoriController extends Controller{
         }
 
         KategoriModel::create($request->all());
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
-    
+        return response()->json(['messege' => 'request success'],200);
+
         //return redirect()->route('kategori')->with('sukses','data berhasil di tambahkan');
     }
 
@@ -64,8 +64,8 @@ class KategoriController extends Controller{
         ]);
 
         //return redirect("/kategori");
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
-    
+        return response()->json(['messege' => 'request success'],200);
+
     }
 
     public function hapus(Request $request)

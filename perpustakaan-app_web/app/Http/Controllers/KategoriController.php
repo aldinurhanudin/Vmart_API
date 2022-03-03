@@ -16,7 +16,8 @@ class KategoriController extends Controller{
             'kategori' => KategoriModel::orderBy("nama_kategori", "ASC")->get()
         ];
 
-        return view('/admin/kategori/kategori', $data);
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        // return view('/admin/kategori/kategori', $data);
     }
 
     public function insert(Request $request){
@@ -58,13 +59,15 @@ class KategoriController extends Controller{
             "nama_kategori" => $request->nama_kategori
         ]);
 
-        return redirect("/kategori");
+        return response()->json(['messege' => 'request success'],200);
+        // return redirect("/kategori");
     }
 
     public function hapus(Request $request)
     {
         KategoriModel::where("id_kategori", $request->id_kategori)->delete();
 
-        return redirect("/kategori");
+        return response()->json('Program deleted successfully');
+        // return redirect("/kategori");
     }
 }
