@@ -70,7 +70,7 @@ Route::get('/petugas/delete/{id}', [UserController::class, 'delete'])->middlewar
 // Route::post('/petugas/update/{id}', [PetugasController::class, 'update']);//->middleware('admin');
 // Route::get('/petugas/delete/{id}', [PetugasController::class, 'delete']);//->middleware('admin');
 
-Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori')->middleware('admin');
+Route::get('/kategori', [KategoriController::class, 'index'])->middleware('admin');
 Route::post('/kategori/insert', [KategoriController::class, 'insert'])->middleware('admin');
 Route::get('/kategori/edit/{id_kategori}', [KategoriController::class, 'edit'])->middleware('admin');
 Route::post('/kategori/update', [KategoriController::class, 'update'])->middleware('admin');

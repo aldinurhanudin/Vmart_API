@@ -21,8 +21,8 @@ class UserController extends Controller
         ];
         if(auth()->user()->id_role == 1)
 
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
-        // return view('/admin/petugas/v_petugas', $data);
+        //return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return view('/admin/petugas/v_petugas', $data);
 
     }
 

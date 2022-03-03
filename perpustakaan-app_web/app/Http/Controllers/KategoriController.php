@@ -16,8 +16,8 @@ class KategoriController extends Controller{
             'kategori' => KategoriModel::orderBy("nama_kategori", "ASC")->get()
         ];
 
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
-        // return view('/admin/kategori/kategori', $data);
+        //return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return view('/admin/kategori/kategori', $data);
     }
 
     public function insert(Request $request){
