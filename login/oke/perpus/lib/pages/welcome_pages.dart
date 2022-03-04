@@ -56,8 +56,7 @@ class _WellcomePageState extends State<WellcomePage> {
                 width: MediaQuery.of(context).size.width - 2 * defaultMargin,
                 child: ElevatedButton(
                   onPressed: () {
-                  
-     // NOTE : TAMPILKAN MODAL REGISTER
+                    // NOTE : TAMPILKAN MODAL REGISTER
                     showModalBottomSheet(
                         isDismissible: true,
                         enableDrag: true,
@@ -103,7 +102,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                                 fontSize: 20),
                                                       ),
                                                       Text(
-                                                        "Register",
+                                                        "Login",
                                                         style: dangerTextStyle
                                                             .copyWith(
                                                                 color:
@@ -263,7 +262,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                     .width,
                                                 child: ElevatedButton(
                                                   onPressed: () {},
-                                                  child: Text('Register',
+                                                  child: Text('Login',
                                                       style: whiteTextStyle
                                                           .copyWith(
                                                               fontSize: 20,
@@ -295,7 +294,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                         whiteTextStyle.copyWith(
                                                             color: primaryColor,
                                                             fontSize: 18)),
-                                                Text(" Login",
+                                                Text(" Register",
                                                     style: dangerTextStyle
                                                         .copyWith(
                                                             fontSize: 18)),
@@ -312,7 +311,6 @@ class _WellcomePageState extends State<WellcomePage> {
                             );
                           });
                         });
-
                   },
                   child: Text('Create Account',
                       style: whiteTextStyle.copyWith(
@@ -333,7 +331,7 @@ class _WellcomePageState extends State<WellcomePage> {
                 width: MediaQuery.of(context).size.width - 2 * defaultMargin,
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: Text('Login',
+                  child: Text('Register',
                       style: whiteTextStyle.copyWith(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
