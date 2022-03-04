@@ -8,6 +8,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool isHidden = true;
+  TextEditingController emailC =TextEditingController();
+  TextEditingController passC =TextEditingController();
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -20,24 +23,42 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final email = TextFormField(
+      controller: emailC,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
-      initialValue: 'profil@gmail.com',
+      // initialValue: 'aldinurhanudin08@gmail.com',
       decoration: InputDecoration(
         hintText: 'Email',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)
+        ),
+        prefixIcon: Icon(Icons.email),
       ),
     );
 
     final password = TextFormField(
+      controller: passC,
       autofocus: false,
-      initialValue: 'terserah',
-      obscureText: true,
+      // initialValue: 'terserah',
+      obscureText: isHidden,
+      textInputAction: TextInputAction.done,
       decoration: InputDecoration(
         hintText: 'Password',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)
+        ),
+        prefixIcon: Icon(Icons.vpn_key),
+        suffixIcon: IconButton(
+          onPressed: () {
+            if (isHidden == true) {
+              isHidden = false;
+            }else {
+              isHidden = true;
+            }
+            setState(() {});
+          },
+          icon: Icon(Icons.remove_red_eye),
+        )
       ),
     );
 
@@ -48,6 +69,7 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
+          print("LOGIN DENGAN : EMAIL(${emailC.text}) & PASS(${passC.text})");
           Navigator.of(context).pushNamed(HomePage.tag);
         },
         padding: EdgeInsets.all(12),
