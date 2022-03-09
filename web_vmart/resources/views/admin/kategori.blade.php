@@ -97,7 +97,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <?php $no =1; ?>
+                        @foreach ($product_category as $data )
+                        <tr>
+                            <td>{{ $no++ }}</td>
+
+                            <td>{{ $data->name }}</td>
+
+                        </tr>
+
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -44,11 +44,11 @@
                         <tr>
                             <th>No</th>
 
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>SUbjek</th>
-
-                            <th>Pesan</th>
+                            <th>Pembayaran Order</th>
+                            <th>Customer</th>
+                            <th>Tanggal</th>
+                            <th>Jumlah</th>
+                            <th>Status</th>
 
 
                         </tr>
@@ -59,10 +59,11 @@
                         @foreach ($payments as $data )
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $data->order }}</td>
+
+                            <td>{{ $data->getOrder->order_number }}</td>
                             <td>{{ $data->email }}</td>
-                            <td>{{ $data->subject }}</td>
-                            <td>{{ $data->message }}</td>
+                            <td>{{ $data->payment_date }}</td>
+                            <td>{{ $data->payment_price }}</td>
                         </tr>
 
 

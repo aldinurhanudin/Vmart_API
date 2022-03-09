@@ -1,6 +1,6 @@
 
 @extends("Layout.v_template")
-@section('title','Pelanggan')
+@section('title','Kontak')
 @section('content-header')
 <h1>
     @yield('title')
@@ -43,19 +43,31 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>ID anggota</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Tempat Lahir</th>
 
-                            <th>No Hp</th>
-                            <th>Aksi</th>
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>No HP</th>
+                            <th>Alamat</th>
+
+
 
                         </tr>
                     </thead>
 
                     <tbody>
+                        <?php $no =1; ?>
+                        @foreach ($customers as $data )
+                        <tr>
+                            <td>{{ $no++ }}</td>
 
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->getUser->email }}</td>
+                            <td>{{ $data->phone_number }}</td>
+                            <td>{{ $data->address }}</td>
+                        </tr>
+
+
+                        @endforeach
                     </tbody>
                 </table>
             </div>

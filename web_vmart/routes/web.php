@@ -5,7 +5,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CustomerController;
+//use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,20 +34,21 @@ Route::get('/kontak', function () {
     return view('admin/kontak');
 });
 Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
-Route::get('/pesanan', function () {
-    return view('admin/pesanan');
-});
-Route::get('/pembayaran', function () {
-    return view('admin/pembayaran');
-});
-Route::get('/kontak', [PaymentController::class, 'index']);
+Route::get('/pesanan', [orderController::class, 'index']);
+// Route::get('/pesanan', function () {
+//     return view('admin/pesanan');
+// });
+// Route::get('/pembayaran', function () {
+//     return view('admin/pembayaran');
+// });
+Route::get('/pembayaran', [PaymentController::class, 'index']);
+Route::get('/kategori', [ProductCategoryController::class, 'index']);
+Route::get('/pelanggan', [CustomerController::class, 'index']);
 
-Route::get('/produk', function () {
-    return view('admin/produk');
-});
-Route::get('/pelanggan', function () {
-    return view('admin/pelanggan');
-});
+// Route::get('/produk', function () {
+//     return view('admin/produk');
+// });
+
 Route::get('/kupon', function () {
     return view('admin/kupon');
 });

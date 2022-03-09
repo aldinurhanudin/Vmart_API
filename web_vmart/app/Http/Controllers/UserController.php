@@ -1,18 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\order;
+use App\Models\users;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-class OrderController extends Controller
+class USerController extends Controller
 {
     public function index(){
         $data = [
 
-            "orders" => order::orderBy("id", "DESC")->get()
+            "users" => user::orderBy("id", "DESC")->get()
         ];
-        return view('/admin/pesanan', $data);
+        return view('/admin/', $data);
     }
-
 }
