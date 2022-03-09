@@ -45,9 +45,9 @@ Route::get('/pembayaran', [PaymentController::class, 'index']);
 Route::get('/kategori', [ProductCategoryController::class, 'index']);
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 
-// Route::get('/produk', function () {
-//     return view('admin/produk');
-// });
+Route::get('/produk', function () {
+    return view('admin/produk');
+});
 
 Route::get('/kupon', function () {
     return view('admin/kupon');
