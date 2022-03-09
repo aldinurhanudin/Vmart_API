@@ -46,7 +46,11 @@ Route::get('/kategori', [ProductCategoryController::class, 'index']);
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 
 Route::get('/produk', function () {
-    return view('admin/produk');
+    return view('admin/produk/tambah_produk');
+});
+
+Route::get('/produk/edit', function () {
+    return view('admin/produk/edit_produk');
 });
 
 Route::get('/kupon', function () {
