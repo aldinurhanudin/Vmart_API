@@ -42,12 +42,12 @@
 
 @section('content')
 <div class="row">
+    @foreach ($products as $data)
 
-
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Data @yield('title')</h3>
+                <h3 class="box-title">{{$data->name}}</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fa fa-minus"></i></button>
@@ -56,24 +56,41 @@
                 </div>
             </div>
             <!-- /.box-header -->
+
+
             <div class="box-body">
+
+                <div class="text_center">
+
+                </div>
                 <table id="" class="table table-hover">
                     <thead>
                         <tr>
-                            <th style="width: 10px">No</th>
-                            <th>Nama Produk</th>
+                            <td class="text-center">
 
-                            <th>Label</th>
+                                <img src="{{ url('/image/'.$data->picture_name) }}" width='150px' height='100px' >
+                            </td>
+                        </tr>
+
+                        <tr>
+
+
+                            <td class="text-center" style="justify">{{$data->stock}} {{$data->product_unit }} / {{$data->price}}</td>
+
                         </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
                 </table>
+
+
+
             </div>
         </div>
 
     </div>
+    @endforeach
 
     @endsection
 
