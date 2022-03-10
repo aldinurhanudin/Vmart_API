@@ -61,6 +61,7 @@
                 <span class="nav-link-text">Icons</span>
               </a>
             </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="map.html">
                 <i class="ni ni-pin-3 text-primary"></i>
