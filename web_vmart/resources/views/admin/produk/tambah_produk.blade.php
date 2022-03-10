@@ -51,12 +51,12 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="/kategori/insert" method="POST" enctype="multipart/form-data">
+            <form role="form" action="/produk/insert" method="POST" enctype="multipart/form-data">
                 <div class="box-body">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="nama_produk">Nama produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukan nama produk" value="{{ old('nama_produk') }}">
+                        <input type="text" class="form-control" id="nama_produk" name="sku" placeholder="" value="{{ $kode }}">
                         <div class="text-danger">
                             @error('nama_produk')
                             {{ $message }}
@@ -64,10 +64,19 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="nama_harga">Harga</label>
-                        <input type="text" class="form-control" id="nama_harga" name="nama_harga" placeholder="Masukan nama harga" value="{{ old('nama_harga') }}">
+                        <label for="nama_produk">Nama produk</label>
+                        <input type="text" class="form-control" id="nama_produk" name="name" placeholder="Masukan nama produk" value="{{ old('name') }}">
                         <div class="text-danger">
-                            @error('nama_harga')
+                            @error('name')
+                            {{ $message }}
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_harga">Harga</label>
+                        <input type="text" class="form-control" id="nama_harga" name="price" placeholder="Masukan nama harga" value="{{ old('price') }}">
+                        <div class="text-danger">
+                            @error('price')
                             {{ $message }}
                             @enderror
                         </div>
@@ -76,9 +85,9 @@
                         <div class="col-md-6">
                         <div class="form-group">
                             <label for="nama_stok">Stok</label>
-                            <input type="text" class="form-control" id="nama_stok" name="nama_stok" placeholder="Masukan nama stok" value="{{ old('nama_stok') }}">
+                            <input type="text" class="form-control" id="nama_stok" name="stock" placeholder="Masukan nama stok" value="{{ old('stock') }}">
                             <div class="text-danger">
-                                @error('nama_stok')
+                                @error('nama_stock')
                                 {{ $message }}
                                 @enderror
                             </div>
@@ -88,9 +97,9 @@
                         <div class="col-md-6">
                         <div class="form-group">
                             <label for="nama_satuan">Satuan</label>
-                            <input type="text" class="form-control" id="nama_produk" name="nama_satuan" placeholder="Masukan nama satuan" value="{{ old('nama_satuan') }}">
+                            <input type="text" class="form-control" id="nama_produk" name="product_unit" placeholder="Masukan nama satuan" value="{{ old('product_unit') }}">
                             <div class="text-danger">
-                                @error('nama_satuan')
+                                @error('product_unit')
                                 {{ $message }}
                                 @enderror
                             </div>
@@ -103,9 +112,9 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama_deskripsi" placeholder="Masukan nama deskripsi" value="{{ old('nama_deskripsi') }}">
+                        <input type="text" class="form-control" id="nama_produk" name="discription" placeholder="Masukan nama deskripsi" value="{{ old('discription') }}">
                         <div class="text-danger">
-                            @error('nama_deskripsi')
+                            @error('discription')
                             {{ $message }}
                             @enderror
                         </div>
@@ -117,40 +126,39 @@
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
 
-    <div class="col-md-4">
-        <div class="box">
-            <div class="box-header with-border">
-                <h3 class="box-title">Data @yield('title')</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                    <i class="fa fa-minus"></i></button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                    <i class="fa fa-times"></i></button>
+        <div class="col-md-4">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Foto</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                <i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <input type="file" class="form-control" name="picture_name" id='foto' placeholder="Stok" value="">
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <table id="" class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th>Nama Produk</th>
-
-                            <th>Label</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-    </div>
+            </form>
 
     @endsection
 
