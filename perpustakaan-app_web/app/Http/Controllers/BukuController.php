@@ -121,7 +121,7 @@ class BukuController extends Controller
                 'penerbit' => 'required',
                 'stok' => 'required',
             ], $message);
-            
+
             BukuModel::where("id_buku", $request->id_buku)->update([
                 "kode_buku" => $request->kode_buku,
                 "judul" => $request->judul,

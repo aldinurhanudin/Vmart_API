@@ -53,6 +53,9 @@ Route::get('/produk/edit', function () {
     return view('admin/produk/edit_produk');
 });
 Route::get('/produk', [productController::class, 'index']);
+Route::get('/produk/add', [productController::class, 'add']);
+Route::post('/produk/insert', [productController::class, 'insert']);
+Route::get('/produk/edit/{id}', [productController::class, 'edit']);
 
 
 Route::get('/kupon', function () {

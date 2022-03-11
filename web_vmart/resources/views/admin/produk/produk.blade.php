@@ -41,6 +41,7 @@
 @endsection
 
 @section('content')
+<p><a href="produk/add" class=" btn btn-primary btn-sm"style="width: 150px;"><i class="fa fa-plus"></i>Tambah @yield('title')</a></p>
 <div class="row">
     @foreach ($products as $data)
 
@@ -76,6 +77,13 @@
 
 
                             <td class="text-center" style="justify">{{$data->stock}} {{$data->product_unit }} / {{$data->price}}</td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <a href="/buku/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                <a href="/produk/edit/{{$data->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                            </td>
 
                         </tr>
                     </thead>

@@ -56,7 +56,7 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="nama_produk">Nama produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukan nama produk" value="{{ old('nama_produk') }}">
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Masukan nama produk" value="{{ $edit->name }}">
                         <div class="text-danger">
                             @error('nama_produk')
                             {{ $message }}
@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_harga">Harga</label>
-                        <input type="text" class="form-control" id="nama_harga" name="nama_harga" placeholder="Masukan nama harga" value="{{ old('nama_harga') }}">
+                        <input type="text" class="form-control" id="nama_harga" name="nama_harga" placeholder="Masukan nama harga" value="{{ $edit->price }}">
                         <div class="text-danger">
                             @error('nama_harga')
                             {{ $message }}
@@ -76,7 +76,7 @@
                         <div class="col-md-6">
                         <div class="form-group">
                             <label for="nama_stok">Stok</label>
-                            <input type="text" class="form-control" id="nama_stok" name="nama_stok" placeholder="Masukan nama stok" value="{{ old('nama_stok') }}">
+                            <input type="text" class="form-control" id="nama_stok" name="nama_stok" placeholder="Masukan nama stok" value="{{ $edit->stock }}">
                             <div class="text-danger">
                                 @error('nama_stok')
                                 {{ $message }}
@@ -88,7 +88,7 @@
                         <div class="col-md-6">
                         <div class="form-group">
                             <label for="nama_satuan">Satuan</label>
-                            <input type="text" class="form-control" id="nama_produk" name="nama_satuan" placeholder="Masukan nama satuan" value="{{ old('nama_satuan') }}">
+                            <input type="text" class="form-control" id="nama_produk" name="nama_satuan" placeholder="Masukan nama satuan" value="{{ $edit->product_unit }}">
                             <div class="text-danger">
                                 @error('nama_satuan')
                                 {{ $message }}
@@ -103,7 +103,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama_deskripsi" placeholder="Masukan nama deskripsi" value="{{ old('nama_deskripsi') }}">
+                        <input type="text" class="form-control" id="nama_produk" name="nama_deskripsi" placeholder="Masukan nama deskripsi" value="{{ $edit->description }}">
                         <div class="text-danger">
                             @error('nama_deskripsi')
                             {{ $message }}
@@ -136,11 +136,17 @@
             <div class="box-body">
                 <table id="" class="table table-hover">
                     <thead>
-                        <tr>
-                            <th style="width: 10px">No</th>
-                            <th>Nama Produk</th>
+                        <tr class="text-center">
 
-                            <th>Label</th>
+                            <td> <img src="{{ url('/image/'.$edit->picture_name) }}" width='150px' height='100px' ></td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <input type="file" class="form-control" name="picture_name" id='foto' placeholder="Stok" value="">
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
