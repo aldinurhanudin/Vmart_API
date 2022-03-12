@@ -68,8 +68,7 @@
                     <thead>
                         <tr>
                             <td class="text-center">
-
-                                <img src="{{ url('/image/'.$data->picture_name) }}" width='150px' height='100px' >
+                                <img src="{{ url('/storage/'.$data->picture_name) }}" alt="" width="100%" height="">
                             </td>
                         </tr>
 

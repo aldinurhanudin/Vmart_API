@@ -5,12 +5,12 @@
 <h1>
     @yield('title')
     <small>@yield('title')</small>
-  </h1>
-  <ol class="breadcrumb">
+</h1>
+<ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
     <li><a href="#">Buku</a></li>
     <li class="active">@yield('title')</li>
-  </ol>
+</ol>
 @endsection
 @section("page_scripts")
 
@@ -55,8 +55,8 @@
                 <div class="box-body">
                     {{ csrf_field() }}
                     <div class="form-group">
-                        <label for="nama_produk">Nama produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="sku" placeholder="" value="{{ $kode }}">
+                        <label for="nama_produk">ID</label>
+                        <input type="text" class="form-control" id="sku" name="sku" placeholder="" value="{{ $kode }}">
                         <div class="text-danger">
                             @error('nama_produk')
                             {{ $message }}
@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_produk">Nama produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="name" placeholder="Masukan nama produk" value="{{ old('name') }}">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama produk" value="{{ old('name') }}">
                         <div class="text-danger">
                             @error('name')
                             {{ $message }}
@@ -73,8 +73,24 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="exampleInputPassword1">Kategori</label>
+                        <select class="form-control select2" name="category_id">
+                            <option></option>
+                            @foreach($kategori as $k)
+                            <option value="{{ $k->id }}">
+                                {{ $k->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                        <div class="text-danger">
+                            @error('category_id')
+                            {{ $message }}
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="nama_harga">Harga</label>
-                        <input type="text" class="form-control" id="nama_harga" name="price" placeholder="Masukan nama harga" value="{{ old('price') }}">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Masukan nama harga" value="{{ old('price') }}">
                         <div class="text-danger">
                             @error('price')
                             {{ $message }}
@@ -83,36 +99,34 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="nama_stok">Stok</label>
-                            <input type="text" class="form-control" id="nama_stok" name="stock" placeholder="Masukan nama stok" value="{{ old('stock') }}">
-                            <div class="text-danger">
-                                @error('nama_stock')
-                                {{ $message }}
-                                @enderror
+                            <div class="form-group">
+                                <label for="nama_stok">Stok</label>
+                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Masukan nama stok" value="{{ old('stock') }}">
+                                <div class="text-danger">
+                                    @error('stock')
+                                    {{ $message }}
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
                         </div>
 
                         <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="nama_satuan">Satuan</label>
-                            <input type="text" class="form-control" id="nama_produk" name="product_unit" placeholder="Masukan nama satuan" value="{{ old('product_unit') }}">
-                            <div class="text-danger">
-                                @error('product_unit')
-                                {{ $message }}
-                                @enderror
+                            <div class="form-group">
+                                <label for="nama_satuan">Satuan</label>
+                                <input type="text" class="form-control" id="product_unit" name="product_unit" placeholder="Masukan nama satuan" value="{{ old('product_unit') }}">
+                                <div class="text-danger">
+                                    @error('product_unit')
+                                    {{ $message }}
+                                    @enderror
+                                </div>
                             </div>
+
                         </div>
-
-                    </div>
-
-
 
                     </div>
                     <div class="form-group">
                         <label for="nama_deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" id="nama_produk" name="discription" placeholder="Masukan nama deskripsi" value="{{ old('discription') }}">
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Masukan nama deskripsi" value="{{ old('discription') }}">
                         <div class="text-danger">
                             @error('discription')
                             {{ $message }}
@@ -146,10 +160,16 @@
                                 <thead>
                                     <tr>
                                         <td>
-                                            <input type="file" class="form-control" name="picture_name" id='foto' placeholder="Stok" value="">
+                                            <input type="file" class="form-control" name="picture_name" id='picture_name' placeholder="" value="">
+                                            <div class="text-danger">
+                                                @error('picture_name')
+                                                {{ $message }}
+                                                @enderror
+                                            </div>
                                         </td>
                                     </tr>
                                 </thead>
+
                                 <tbody>
 
                                 </tbody>
@@ -160,6 +180,6 @@
                 </div>
             </form>
 
-    @endsection
+            @endsection
 
 

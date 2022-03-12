@@ -45,17 +45,18 @@ Route::get('/pembayaran', [PaymentController::class, 'index']);
 Route::get('/kategori', [ProductCategoryController::class, 'index']);
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 
-Route::get('/produk/tambah', function () {
-    return view('admin/produk/tambah_produk');
-});
+// Route::get('/produk/tambah', function () {
+//     return view('admin/produk/tambah_produk');
+// });
 
-Route::get('/produk/edit', function () {
-    return view('admin/produk/edit_produk');
-});
+// Route::get('/produk/edit', function () {
+//     return view('admin/produk/edit_produk');
+// });
 Route::get('/produk', [productController::class, 'index']);
 Route::get('/produk/add', [productController::class, 'add']);
 Route::post('/produk/insert', [productController::class, 'insert']);
 Route::get('/produk/edit/{id}', [productController::class, 'edit']);
+Route::post('/produk/update/', [productController::class, 'update']);
 
 
 Route::get('/kupon', function () {

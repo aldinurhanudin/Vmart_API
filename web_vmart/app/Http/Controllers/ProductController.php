@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\product;
+use App\Models\product_category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -31,14 +32,16 @@ class ProductController extends Controller
     public function add(){
         // dd($this->sku());
         $data= [
-            "kode" => $this->sku()
+            "kode" => $this->sku(),
+            "kategori" => product_category::orderBy("name", "DESC")->get()
         ];
         return view('/admin/produk/tambah_produk', $data);
     }
 
     public function edit($id){
         $data = [
-            "edit" => product::where("id", $id)->first()
+            "edit" => product::where("id", $id)->first(),
+            "kategori" => product_category::orderBy("name", "DESC")->get()
 
         ];
 
@@ -47,46 +50,87 @@ class ProductController extends Controller
     public function insert(Request $request){
 
         $message = [
-        // 'kode_buku.required' => 'wajib diisi!!',
-        // 'kode_buku.unique' => 'kode buku ini sudah ada!!!',
-        // 'kode_buku.min' => 'Min 4 Karakter',
-        // 'kode_buku.max' => 'Max 7 Karakter',
-        'sku.required' => 'wajib diisi!!',
-        'category_id.required' => 'wajib diisi!!',
-        'name.required' => 'wajib diisi!!',
-        'picture_name.required' => 'wajib diisi!!',
-        'price.required' => 'wajib diisi!!',
-        'stock.required' => 'wajib diisi!!',
+            'sku.required' => 'wajib diisi!!',
 
-        ];
+            'category_id.required' => 'wajib diisi!!',
+            'name.required' => 'wajib diisi!!',
+            'description.required' => 'wajib diisi!!',
+            'picture_name.required' => 'wajib diisi!!',
+            'price.required' => 'wajib diisi!!',
+            'stock.required' => 'wajib diisi!!',
+            'product_unit.required' => 'wajib diisi!!',
+
+            ];
 
         $validateData = $this->validate($request, [
+            "category_id" => "required",
             'sku' => 'required',
-            'category_id' => 'required',
             'name' => 'required',
             'description' => 'required',
             'picture_name' => 'required',
+            'product_unit' => 'required',
             'price' => 'required',
             'stock' => 'required',
-            //'foto' => 'required',
-        ], $message);
+            ], $message);
 
-        // $validateData['description'] = $request->description; //kalo ga mau di validatev
+        // $validateData = $request->validate([
+        //     "category_id" => "required",
+        //     'sku' => 'required',
+        //     'name' => 'required',
+        //     'description' => 'required',
+        //     'picture_name' => 'required',
+        //     'price' => 'required',
+        //     'stock' => 'required',
+        // ]);
 
         if ($request->file("picture_name")) {
 
-            $validateData['picture_name'] = $request->file("picture_name")->store("image");
+            $validateData['picture_name'] = $request->file("picture_name")->store("post-image");
 
         }
 
-        // $cek_double = BukuModel::where(["nama_kategori" => $request->nama_kategori])->count();
-
-        // if ($cek_double > 0) {
-        //     return redirect()->back()->with("gagal", "Tidak Boleh Duplikasi Data");
-        // }
 
         product::create($validateData);
 
-        return redirect('admin/produk/produk')->with('pesan','data berhasil di tambahkan');
+        return redirect('/produk')->with('pesan','data berhasil di tambahkan');
+    }
+
+    public function update(Request $request)
+    {
+
+
+
+        $validateData = $this->validate($request, [
+            "category_id" => "required",
+            'sku' => 'required',
+            //'picture_name' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'product_unit' => 'required',
+            'price' => 'required',
+            'stock' => 'required'
+        ]);
+
+        // product::where("id", $request->id)->update([
+        //     'category_id' => $request->category_id,
+        //     "sku" => $request->sku,
+        //     "name" => $request->name,
+        //     "description" => $request->description,
+        //     "product_unit" => $request->product_unit,
+        //     'price'=> $request->price,
+        //     'stock'=> $request->stock,
+        // ]);
+        if ($request->file("picture_name")) {
+
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+
+            $validateData['picture_name'] = $request->file("picture_name")->store("image");
+        }
+        product::where("id", $request->id)->update($validateData);
+       // dd($validateData);
+
+        return redirect("/produk");
     }
 }
