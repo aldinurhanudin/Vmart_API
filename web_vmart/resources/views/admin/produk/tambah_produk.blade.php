@@ -72,8 +72,9 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group ">
                         <label for="exampleInputPassword1">Kategori</label>
+
                         <select class="form-control select2" name="category_id">
                             <option></option>
                             @foreach($kategori as $k)

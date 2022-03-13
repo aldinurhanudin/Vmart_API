@@ -133,4 +133,10 @@ class ProductController extends Controller
 
         return redirect("/produk");
     }
+    public function hapus(Request $request)
+    {
+        product::where("id", $request->id)->delete();
+
+        return redirect('/produk')->with('pesan','data berhasil di hapus');
+    }
 }

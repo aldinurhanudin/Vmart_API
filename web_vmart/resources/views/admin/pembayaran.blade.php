@@ -59,9 +59,9 @@
                         @foreach ($payments as $data )
                         <tr>
                             <td>{{ $no++ }}</td>
-
                             <td>{{ $data->getOrder->order_number }}</td>
-                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->getOrder->user_id  }}</td>
+                            {{-- <td>{{ $data->email }}</td> --}}
                             <td>{{ $data->payment_date }}</td>
                             <td>{{ $data->payment_price }}</td>
                         </tr>

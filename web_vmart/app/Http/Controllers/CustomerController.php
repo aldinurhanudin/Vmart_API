@@ -15,4 +15,12 @@ class CustomerController extends Controller
         return view('/admin/pelanggan', $data);
     }
 
+    public function delete(Request $request)
+    {
+        customer::where("id", $request->id)->delete();
+
+        return redirect('/pelanggan')->with('pesan','data berhasil di hapus');
+    }
+
+
 }

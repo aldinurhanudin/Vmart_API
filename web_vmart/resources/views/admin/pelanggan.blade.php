@@ -48,6 +48,7 @@
                             <th>Email</th>
                             <th>No HP</th>
                             <th>Alamat</th>
+                            <th>AKsi</th>
 
 
 
@@ -64,6 +65,9 @@
                             <td>{{ $data->getUser->email }}</td>
                             <td>{{ $data->phone_number }}</td>
                             <td>{{ $data->address }}</td>
+                            <td><button type="button"  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ $data->id }}">
+                                <i class="fa fa-trash"></i>
+                            </button></td>
                         </tr>
 
 
@@ -76,31 +80,31 @@
         <!-- /.box -->
     </div>
 </div>
-{{--
-@foreach ( $anggota as $data)
+
+@foreach ( $customers as $data)
 
 
-<div class="modal modal-danger fade" id="delete{{ $data->id_anggota }}">
+<div class="modal modal-danger fade" id="delete{{ $data->id }}">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">{{ $data->nama_anggota }}</h4>
+                    <h4 class="modal-title">{{ $data->name }}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Apakah Anda yakin ingin anggota ini!</p>
+                    <p>Apakah Anda yakin ingin {{$data->name}} ini!</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">No</button>
-                    <a href="anggota/delete/{{ $data->id_anggota }}" class="btn btn-outline">Yes</a>
+                    <a href="pelanggan/delete/{{ $data->id }}" class="btn btn-outline">Yes</a>
                 </div>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
     </div>
-    @endforeach --}}
+    @endforeach
     @endsection
 
 
