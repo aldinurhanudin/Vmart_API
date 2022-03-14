@@ -51,9 +51,9 @@ Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
 
-// Route::get('/produk/tambah', function () {
-//     return view('admin/produk/tambah_produk');
-// });
+Route::get('/setting/profile', function () {
+    return view('/admin/setting/profile');
+});
 
 // Route::get('/produk/edit', function () {
 //     return view('admin/produk/edit_produk');

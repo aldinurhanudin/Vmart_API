@@ -57,7 +57,7 @@
                         <li class="dropdown user user-menu">
                             {{-- @if(auth()->user()->id_role == 1) --}}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/template/dist/img/user-icon.jpg" class="user-image" alt="User Image">
+                                <img src="/template/dist/img/user-icon.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs">Admin </span>
                                 {{-- <span class="hidden-xs">{{auth()->user()->name}} </span> --}}
                             </a>
@@ -65,7 +65,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/template/dist/img/user-icon.jpg" class="img-circle" alt="User Image">
+                                    <img src="/template/dist/img/user-icon.png" class="img-circle" alt="User Image">
 
                                     <p>
                                         {{-- {{auth()->user()->name}} --}}
@@ -85,6 +85,9 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
 
+                                    <div class="pull-left">
+                                        <a href="/setting/profile" class="btn btn-default btn-flat">profile</a>
+                                    </div>
                                     <div class="pull-right">
                                         <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
@@ -106,7 +109,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/template/dist/img/user-icon.jpg" class="img-circle" alt="User Image">
+                        <img src="/template/dist/img/user-icon.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>Admin</p>
