@@ -76,6 +76,7 @@
 
                             <td>{{ $data->total_items }}</td>
                             <td>{{ $data->total_price }}</td>
+                            <td>{{ $data->order_status }}</td>
                         </tr>
 
 
