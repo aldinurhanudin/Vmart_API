@@ -59,8 +59,26 @@
                         @foreach ($payments as $data )
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $data->getOrder->order_number }}</td>
-                            <td>{{ $data->getOrder->getCustomer->name  }}</td>
+                            {{-- <td>{{ $data->getOrder->order_number }}</td> --}}
+                            <td>
+                                @if(empty($data->getOrder->order_number))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ $data->getOrder->order_number }}
+                                @endif
+                            </td>
+                            {{-- <td>{{ $data->getOrder->getCustomer->name  }}</td> --}}
+                            <td>
+                                @if(empty($data->getOrder->getCustomer->name))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ $data->getOrder->getCustomer->name }}
+                                @endif
+                            </td>
                             {{-- <td>{{ $data->email }}</td> --}}
                             <td>{{ $data->payment_date }}</td>
                             <td>{{ $data->payment_price }}</td>

@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 //use App\Http\Controllers\UserController;
 
 /*
@@ -24,15 +26,21 @@ use App\Http\Controllers\CustomerController;
 // Route::get('/', function () {
 //     return view('layout/template');
 // });
-Route::get('/', function () {
-    return view('admin/dashboard');
-});
+// Route::get('/', function () {
+//     return view('admin/dashboard');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->middleware('admin');
 // Route::get('/kategori', function () {
 //     return view('admin/kategori');
 // });
 Route::get('/kontak', function () {
     return view('admin/kontak');
 });
+Route::get('/login', [LoginController::class, 'login']);
+Route::post('/post_login', [LoginController::class, 'post_login']);
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('admin');
+
 Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
 Route::get('/pesanan', [orderController::class, 'index']);
 // Route::get('/pesanan', function () {
@@ -41,7 +49,7 @@ Route::get('/pesanan', [orderController::class, 'index']);
 // Route::get('/pembayaran', function () {
 //     return view('admin/pembayaran');
 // });
-Route::get('/pembayaran', [PaymentController::class, 'index']);
+Route::get('/pembayaran', [PaymentController::class, 'index'])->middleware('admin');
 Route::get('/kategori', [ProductCategoryController::class, 'index'])->name('kategori');
 Route::post('/kategori/insert', [ProductCategoryController::class, 'insert']);
 Route::get('/kategori/edit/{id}', [ProductCategoryController::class, 'edit']);

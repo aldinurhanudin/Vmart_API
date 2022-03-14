@@ -62,8 +62,16 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $data->order_number }}</td>
-                            <td>{{ $data->getCustomer->name }}</td>
-
+                            {{-- <td>{{ $data->getCustomer->name }}</td> --}}
+                            <td>
+                                @if(empty($data->getCustomer->name))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ $data->getCustomer->name }}
+                                @endif
+                            </td>
                             <td>{{ $data->order_date }}</td>
 
                             <td>{{ $data->total_items }}</td>
