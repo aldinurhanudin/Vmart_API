@@ -82,7 +82,21 @@
                                     {{-- <td>{{ $data->email }}</td> --}}
                                     <td>{{ $data->payment_date }}</td>
                                     <td>{{ $data->payment_price }}</td>
-                                    <td>{{ $data->payment_status }}</td>
+                                    <td>
+                                        @if($data->payment_status == 1)
+                                        <i>
+                                            <b>Belum Dikomfirmasi</b>
+                                        </i>
+                                        @elseif ($data->payment_status == 2)
+                                        <i>
+                                            <b>Berhasil Dikonfirmasi</b>
+                                        </i>
+                                        @elseif (empty($data->payment_status))
+                                        <i>
+                                            <b>Null</b>
+                                        </i>
+                                        @endif
+                                    </td>
 
                                 </tr>
 
