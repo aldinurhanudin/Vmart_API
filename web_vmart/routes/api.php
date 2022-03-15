@@ -11,6 +11,7 @@ use App\Http\Controllers\API\ReviewController;
 use App\Http\Controllers\API\CustomerController;
 use App\Http\Controllers\API\LoginController;
 use App\Http\Controllers\API\HomeController;
+use App\Http\Controllers\API\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/', [HomeController::class, 'index']);//->middleware('admin');
-// Route::get('/kategori', function () {
-//     return view('admin/kategori');
-// });
+
 Route::get('/kontak', function () {
     return view('admin/kontak');
 });
@@ -40,12 +39,7 @@ Route::get('/logout', [LoginController::class, 'logout']);//->middleware('admin'
 
 Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
 Route::get('/pesanan', [orderController::class, 'index']);
-// Route::get('/pesanan', function () {
-//     return view('admin/pesanan');
-// });
-// Route::get('/pembayaran', function () {
-//     return view('admin/pembayaran');
-// });
+
 Route::get('/pembayaran', [PaymentController::class, 'index']);//->middleware('admin');
 Route::get('/kategori', [ProductCategoryController::class, 'index'])->name('kategori');
 Route::post('/kategori/insert', [ProductCategoryController::class, 'insert']);
@@ -60,9 +54,7 @@ Route::get('/setting/profile', function () {
     return view('/admin/setting/profile');
 });
 
-// Route::get('/produk/edit', function () {
-//     return view('admin/produk/edit_produk');
-// });
+
 Route::get('/produk', [productController::class, 'index']);
 Route::get('/produk/add', [productController::class, 'add']);
 Route::post('/produk/insert', [productController::class, 'insert']);

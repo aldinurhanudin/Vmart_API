@@ -11,7 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-//use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,17 +24,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('layout/template');
-// });
-// Route::get('/', function () {
-//     return view('admin/dashboard');
-// });
+
 
 Route::get('/', [HomeController::class, 'index'])->middleware('admin');
-// Route::get('/kategori', function () {
-//     return view('admin/kategori');
-// });
+
 Route::get('/kontak', function () {
     return view('admin/kontak');
 });
@@ -44,12 +37,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->middleware('admin');
 
 Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
 Route::get('/pesanan', [orderController::class, 'index']);
-// Route::get('/pesanan', function () {
-//     return view('admin/pesanan');
-// });
-// Route::get('/pembayaran', function () {
-//     return view('admin/pembayaran');
-// });
+
 Route::get('/pembayaran', [PaymentController::class, 'index'])->middleware('admin');
 Route::get('/kategori', [ProductCategoryController::class, 'index'])->name('kategori');
 Route::post('/kategori/insert', [ProductCategoryController::class, 'insert']);
@@ -60,17 +48,12 @@ Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
 
-// Route::get('/setting/profile', function () {
-//     return view('/admin/setting/profile');
-// });
 
 Route::get('/setting/profile/{id}', [UserController::class, 'edit']);
 Route::post('/profile/update', [UserController::class, 'update']);
 
 
-// Route::get('/produk/edit', function () {
-//     return view('admin/produk/edit_produk');
-// });
+
 Route::get('/produk', [productController::class, 'index']);
 Route::get('/produk/add', [productController::class, 'add']);
 Route::post('/produk/insert', [productController::class, 'insert']);
@@ -82,18 +65,3 @@ Route::get('/produk/hapus/{id}', [productController::class, 'hapus']);
 Route::get('/kupon', function () {
     return view('admin/kupon');
 });
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::prefix("admin")->group(function() {
-//     Route::get("/theme", function() {
-//         return view("layout/template");
-//     });
-// });
