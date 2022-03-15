@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 
-class icaController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class icaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/dashboard');
     }
 
     /**
