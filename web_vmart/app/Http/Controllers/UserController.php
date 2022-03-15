@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\users;
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -81,8 +81,50 @@ class USerController extends Controller
             //"kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
 
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+
+        return view('/admin/setting/profile', $data);
+        // return response()->json(['messege' => 'request success', 'data' => $data],200);
         // return view("/admin/petugas/v_editpetugas", $data);
+    }
+
+    public function update(Request $request){
+
+        $message = [
+            'name.required' => 'wajib diisi!!',
+            'username.required' => 'wajib diisi!!',
+            //'name.min' => 'Min 4 Karakter',
+            'email.required' => 'wajib diisi!!',
+            'email.email' => 'masukan email yang benar',
+            'email.unique' => 'email ini sudah ada!!!',
+            'password.required' => 'wajib diisi!!',
+            'password.min' => 'Min 5 Karakter',
+            //'password.max' => 'Max 255 Karakter',
+
+        ];
+
+        $this->validate($request, [
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required|email:dns',
+            'password' => 'required|min:5|max:255',
+        ], $message);
+
+
+        User::where("id", $request->id)->update([
+            "name" => $request->name,
+            "username" => $request->username,
+            "email" => $request->email,
+            "password" => bcrypt($request->password),
+
+        ]);
+        // $data = [
+        //     "name" => $request->name,
+        //     "email" => $request->email,
+        //     "password" => hash::make($request->password),
+        // ];
+        // DB::table('users')->insert($data);
+
+        return redirect()->back()->with('pesan','data berhasil di tambahkan');
     }
 
 }

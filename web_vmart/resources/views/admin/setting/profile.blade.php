@@ -51,15 +51,15 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="/produk/insert" method="POST" enctype="multipart/form-data">
+            <form role="form" action="/profile/update" method="POST" enctype="multipart/form-data">
                 <div class="box-body">
                     {{ csrf_field() }}
-
+                    <input type="hidden" name="id" value="{{ $edit->id }}">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama">Nama</label>
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama stok" value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama stok" value="{{ $edit->name }}">
                                 <div class="text-danger">
                                     @error('name')
                                     {{ $message }}
@@ -71,7 +71,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" name="email" placeholder="Masukan email" value="{{ old('email') }}">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Masukan email" value="{{ $edit->email }}">
                                 <div class="text-danger">
                                     @error('email')
                                     {{ $message }}
@@ -82,7 +82,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukan username" value="{{ old('username') }}">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukan username" value="{{ $edit->username }}">
                                 <div class="text-danger">
                                     @error('username')
                                     {{ $message }}
@@ -93,7 +93,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">Password</label>
-                                <input type="text" class="form-control" id="password" name="password" placeholder="Masukan password" value="{{ old('password') }}">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Masukan password" value="password">
                                 <div class="text-danger">
                                     @error('password')
                                     {{ $message }}

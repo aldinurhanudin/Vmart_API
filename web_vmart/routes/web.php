@@ -64,7 +64,8 @@ Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
 //     return view('/admin/setting/profile');
 // });
 
-Route::get('/setting/profile', [UserController::class, 'index']);
+Route::get('/setting/profile/{id}', [UserController::class, 'edit']);
+Route::post('/profile/update', [UserController::class, 'update']);
 
 
 // Route::get('/produk/edit', function () {
