@@ -76,7 +76,30 @@
 
                             <td>{{ $data->total_items }}</td>
                             <td>{{ $data->total_price }}</td>
-                            <td>{{ $data->order_status }}</td>
+                            
+                            <td> @if($data->order_status == 1)
+                                <i>
+                                    <b>Dalam proses</b>
+                                </i>
+                                @elseif ($data->order_status == 2)
+                                <i>
+                                    <b>Dalam proses</b>
+                                </i>
+                                @elseif ($data->order_status == 3)
+                                <i>
+                                    <b>Dalam pengiriman</b>
+                                </i>
+                                @elseif ($data->order_status == 4)
+                                <i>
+                                    <b>Selesai</b>
+                                </i>
+                                @elseif ($data->order_status == 5)
+                                <i>
+                                    <b>DiBatalkan</b>
+                                </i>
+                                @endif
+
+                            </td>
                         </tr>
 
 
