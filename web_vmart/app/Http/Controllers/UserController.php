@@ -14,4 +14,5 @@ class USerController extends Controller
         ];
         return view('/admin/', $data);
     }
+    
 }

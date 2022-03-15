@@ -59,7 +59,7 @@ Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
 
-Route::get('/setting/profile', function () {
+Route::get('/setting/profile/', function () {
     return view('/admin/setting/profile');
 });
 
