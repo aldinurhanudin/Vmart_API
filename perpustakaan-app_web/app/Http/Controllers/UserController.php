@@ -81,8 +81,8 @@ class UserController extends Controller
             //"kategori" => KategoriModel::orderBy("nama_kategori", "DESC")->get()
         ];
 
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
-        // return view("/admin/petugas/v_editpetugas", $data);
+     //   return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return view("/admin/petugas/v_editpetugas", $data);
     }
 
     public function update(Request $request){
