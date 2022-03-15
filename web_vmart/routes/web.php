@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 //use App\Http\Controllers\UserController;
 
 /*
@@ -59,9 +60,12 @@ Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
 
-Route::get('/setting/profile/', function () {
-    return view('/admin/setting/profile');
-});
+// Route::get('/setting/profile', function () {
+//     return view('/admin/setting/profile');
+// });
+
+Route::get('/setting/profile', [UserController::class, 'index']);
+
 
 // Route::get('/produk/edit', function () {
 //     return view('admin/produk/edit_produk');

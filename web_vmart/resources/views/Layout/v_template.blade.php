@@ -86,7 +86,11 @@
                                 <li class="user-footer">
 
                                     <div class="pull-left">
+<<<<<<< HEAD
                                         <a href="/setting/profile/{{ auth()->user()->id }}" class="btn btn-default btn-flat">profile</a>
+=======
+                                        <a href="/setting/profile/{{auth()->user()->id}}" class="btn btn-default btn-flat">profile</a>
+>>>>>>> c12a8fa02940ca09b69d3d0dec20c6441c3eb30b
                                     </div>
                                     <div class="pull-right">
                                         <a href="/logout" class="btn btn-default btn-flat">Sign out</a>

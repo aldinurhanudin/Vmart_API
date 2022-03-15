@@ -1,6 +1,6 @@
 
 @extends("Layout.v_template")
-@section('title',' Produk')
+@section('title',' Identitas')
 @section('content-header')
 <h1>
     @yield('title')
@@ -46,7 +46,7 @@
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Tambah @yield('title')</h3>
+                <h3 class="box-title"> @yield('title')</h3>
 
             </div>
             <!-- /.box-header -->
@@ -58,10 +58,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nama_stok">Stok</label>
-                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Masukan nama stok" value="{{ old('stock') }}">
+                                <label for="nama">Nama</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama stok" value="{{ old('name') }}">
                                 <div class="text-danger">
-                                    @error('stock')
+                                    @error('name')
                                     {{ $message }}
                                     @enderror
                                 </div>
@@ -70,10 +70,10 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nama_satuan">Satuan</label>
-                                <input type="text" class="form-control" id="product_unit" name="product_unit" placeholder="Masukan nama satuan" value="{{ old('product_unit') }}">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Masukan email" value="{{ old('email') }}">
                                 <div class="text-danger">
-                                    @error('product_unit')
+                                    @error('email')
                                     {{ $message }}
                                     @enderror
                                 </div>
@@ -81,10 +81,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nama_satuan">Satuan</label>
-                                <input type="text" class="form-control" id="product_unit" name="product_unit" placeholder="Masukan nama satuan" value="{{ old('product_unit') }}">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Masukan username" value="{{ old('username') }}">
                                 <div class="text-danger">
-                                    @error('product_unit')
+                                    @error('username')
                                     {{ $message }}
                                     @enderror
                                 </div>
@@ -92,10 +92,10 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nama_satuan">Satuan</label>
-                                <input type="text" class="form-control" id="product_unit" name="product_unit" placeholder="Masukan nama satuan" value="{{ old('product_unit') }}">
+                                <label for="email">Password</label>
+                                <input type="text" class="form-control" id="password" name="password" placeholder="Masukan password" value="{{ old('password') }}">
                                 <div class="text-danger">
-                                    @error('product_unit')
+                                    @error('password')
                                     {{ $message }}
                                     @enderror
                                 </div>
