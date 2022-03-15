@@ -8,7 +8,7 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li><a href="#">Buku</a></li>
+
     <li class="active">@yield('title')</li>
   </ol>
 @endsection
@@ -18,7 +18,7 @@
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Data @yield('title')</h3>
+                <h3 class="box-title">@yield('title')</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

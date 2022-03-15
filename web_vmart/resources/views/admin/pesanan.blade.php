@@ -1,6 +1,6 @@
 
 @extends("Layout.v_template")
-@section('title','Kontak')
+@section('title','Pesanan')
 @section('content-header')
 <h1>
     @yield('title')
@@ -76,7 +76,7 @@
 
                             <td>{{ $data->total_items }}</td>
                             <td>{{ $data->total_price }}</td>
-                            
+
                             <td> @if($data->order_status == 1)
                                 <i>
                                     <b>Dalam proses</b>

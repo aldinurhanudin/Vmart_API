@@ -1,6 +1,6 @@
 
 @extends("Layout.v_template")
-@section('title','Kontak')
+@section('title','Pembayaran')
 @section('content-header')
 <h1>
     @yield('title')
