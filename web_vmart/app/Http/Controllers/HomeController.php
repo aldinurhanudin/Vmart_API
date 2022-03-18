@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\payment;
+use App\Models\product;
+use App\Models\customer;
+use App\Models\order;
 
 class HomeController extends Controller
 {
@@ -11,9 +15,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin/dashboard');
+    public function index(){
+        $data=[
+            "jumlah_product" => product::count(),
+            "jumlah_customer" => customer::count(),
+            "jumlah_order" => order::count(),
+            "jumlah_payment" => payment::sum('payment_price'),
+        ];
+        return view('admin/dashboard',$data);
     }
 
     /**
