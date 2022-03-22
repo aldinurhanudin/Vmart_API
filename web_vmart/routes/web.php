@@ -59,6 +59,7 @@ Route::get('/produk', [productController::class, 'index']);
 Route::get('/produk/add', [productController::class, 'add']);
 Route::post('/produk/insert', [productController::class, 'insert']);
 Route::get('/produk/edit/{id}', [productController::class, 'edit']);
+Route::get('/produk/detail/{id}', [productController::class, 'detail']);
 Route::post('/produk/update/', [productController::class, 'update']);
 Route::get('/produk/hapus/{id}', [productController::class, 'hapus']);
 

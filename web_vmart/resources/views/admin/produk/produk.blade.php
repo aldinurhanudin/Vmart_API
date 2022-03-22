@@ -8,7 +8,7 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-    
+
     <li class="active">@yield('title')</li>
   </ol>
 @endsection
@@ -80,7 +80,7 @@
                         </tr>
                         <tr>
                             <td class="text-center">
-                             <a href="/buku/edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                             <a href="/produk/detail/{{$data->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                            <a href="/produk/edit/{{$data->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                             <button type="button"  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ $data->id }}">
                                 <i class="fa fa-trash"></i>

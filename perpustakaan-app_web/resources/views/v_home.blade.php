@@ -15,31 +15,7 @@
 @endsection
 @section('content')
 
-{{-- @if(auth()->user()->id_role == 1)
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-success">
-            Selamat Datang <b>{{ auth()->user()->name }}</b>
-        </div>
-    </div>
-</div>
-@elseif(auth()->user()->id_role == 2)
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-danger">
-            Selamat Datang <b>{{ auth()->user()->name }}</b>
-        </div>
-    </div>
-</div>
-@else
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-danger">
-            <b>TIDAK JELAS</b>
-        </div>
-    </div>
-</div>
-@endif --}}
+
 
 <div class="row">
     <div class="col-lg-3 col-xs-6">
@@ -172,7 +148,7 @@
 
 @endsection
 @section('page_scripts')
-<?php $sekarang = date("Y");  ?>
+<?php $sekarang = date("Y"); ?>
 <script>
     $(function () {
         var bar_data = {
