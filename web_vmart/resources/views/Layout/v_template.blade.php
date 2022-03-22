@@ -216,7 +216,7 @@
 <script src="/template/bower_components/Flot/jquery.flot.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
 <script src="/template/bower_components/Flot/jquery.flot.categories.js"></script>
-
+    @yield('page_scripts')
     <script>
         $(function () {
             $('.select2').select2(),
@@ -234,6 +234,6 @@
 
 
 
-    @yield("page_scripts")
+
 </body>
 </html>
