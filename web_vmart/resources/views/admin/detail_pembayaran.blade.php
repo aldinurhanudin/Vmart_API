@@ -1,6 +1,6 @@
 
 @extends("Layout.v_template")
-@section('title',' Pembayaran Order')
+@section('title',' Detail Pembayaran')
 @section('content-header')
 <h1>
     @yield('title')
@@ -42,100 +42,90 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-8">
-        <!-- general form elements -->
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Tambah @yield('title')</h3>
 
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form" action="/produk/insert" method="POST" enctype="multipart/form-data">
-                <div class="box-body">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="nama_produk">ID</label>
-                        <input type="text" class="form-control" id="sku" name="sku" placeholder="" >
-                        <div class="text-danger">
-                            @error('nama_produk')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="nama_produk">Nama produk</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama produk" >
-                        <div class="text-danger">
-                            @error('name')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group ">
-                        <label for="exampleInputPassword1">Kategori</label>
-
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="nama_harga">Harga</label>
-                        <input type="text" class="form-control" id="price" name="price" placeholder="Masukan nama harga" >
-                        <div class="text-danger">
-                            @error('price')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="nama_stok">Stok</label>
-                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Masukan nama stok">
-                                <div class="text-danger">
-                                    @error('stock')
-                                    {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="nama_satuan">Satuan</label>
-                                <input type="text" class="form-control" id="product_unit" name="product_unit" placeholder="Masukan nama satuan" >
-                                <div class="text-danger">
-                                    @error('product_unit')
-                                    {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <label for="nama_deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Masukan nama deskripsi" >
-                        <div class="text-danger">
-                            @error('discription')
-                            {{ $message }}
-                            @enderror
-                        </div>
+        <div class="col-md-8">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Pembayaran</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                            <i class="fa fa-times"></i>
+                        </button>
                     </div>
                 </div>
+                <div class="box-body">
+                    <table id="" class="table table-hover">
+                        <thead>
 
-                <!-- /.box-body -->
 
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th>Pembayaran</th>
+                            </tr>
+
+
+                        </thead>
+
+                        <tbody>
+
+                            <tr >
+                               <td >Transfer</td>
+                               <td ></td>
+                               <td ></td>
+                            </tr>
+                            <tr >
+                               <td >Tanggal</td>
+                               <td ></td>
+                               <td ></td>
+                            </tr>
+                            <tr >
+                               <td >Status</td>
+                               <td ></td>
+                               <td ></td>
+                            </tr>
+                            {{-- $kategori:
+                                for ($kategori as $k) {
+                                    if($k->id == $produk->category_id))
+                                }($kategori as $k)
+                                if($k->id == $produk->category_id))
+                                {{ $k->id }}{{ $k->name }}
+                                @endforeach; --}}
+
+
+                            <tr >
+                               <td >Transfer ke</td>
+                               <td ></td>
+                               <td ></td>
+                            </tr>
+                            <tr >
+                               <td >Transfer dari</td>
+                               <td ></td>
+                               <td ></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
+
+
+                <!-- /.box-body -->
+
+
+
+
         <div class="col-md-4">
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Foto</h3>
+                    <h3 class="box-title">Bukti Pembayaran</h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
@@ -143,6 +133,7 @@
                                 <i class="fa fa-times"></i></button>
                             </div>
                         </div>
+
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="" class="table table-hover">
@@ -163,6 +154,9 @@
 
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Oke</button>
                         </div>
                     </div>
 
