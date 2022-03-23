@@ -44,7 +44,8 @@
                                 <tr>
                                     <th>No</th>
 
-                                    <th>Pembayaran Order</th>
+                                    <th>Pembayaran Order
+                                    </th>
                                     <th>Customer</th>
                                     <th>Tanggal</th>
                                     <th>Jumlah</th>
@@ -66,7 +67,7 @@
                                             <b>NULL</b>
                                         </i>
                                         @else
-                                        {{ $data->getOrder->order_number }}
+                                        <a href="{{url('/pembayaran/view')}}/{{$data->getOrder->id}}">{{ $data->getOrder->order_number }}</a>
                                         @endif
                                     </td>
                                     {{-- <td>{{ $data->getOrder->getCustomer->name  }}</td> --}}

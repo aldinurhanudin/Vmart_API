@@ -40,6 +40,7 @@ Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
 Route::get('/pesanan', [orderController::class, 'index']);
 
 Route::get('/pembayaran', [PaymentController::class, 'index'])->middleware('admin');
+Route::get('/pembayaran/view/{id}', [PaymentController::class, 'view'])->middleware('admin');
 Route::get('/kategori', [ProductCategoryController::class, 'index'])->name('kategori');
 Route::post('/kategori/insert', [ProductCategoryController::class, 'insert']);
 Route::get('/kategori/edit/{id}', [ProductCategoryController::class, 'edit']);
