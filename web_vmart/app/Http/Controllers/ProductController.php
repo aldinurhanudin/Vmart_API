@@ -143,6 +143,7 @@ class ProductController extends Controller
 
     public function detail($id){
         $data = [
+            "products" => product::orderBy("id", "DESC")->get(),
             "produk" => product::where("id", $id)->first(),
             "kategori" => product_category::orderBy("name", "DESC")->get()
         ];
