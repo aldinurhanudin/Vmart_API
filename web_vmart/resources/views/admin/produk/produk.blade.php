@@ -80,7 +80,7 @@
                         </tr>
                         <tr>
                             <td class="text-center">
-                             <a href="/produk/detail/{{$data->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                             <a href="/produk/detail/{{$data->id}}" class="btn btn-sm btn-success"><i class="fa fa-search"></i></a>
                            <a href="/produk/edit/{{$data->id}}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                             <button type="button"  class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete{{ $data->id }}">
                                 <i class="fa fa-trash"></i>

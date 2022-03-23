@@ -8,7 +8,7 @@
 </h1>
 <ol class="breadcrumb">
     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-   
+
     <li class="active">@yield('title')</li>
 </ol>
 @endsection
@@ -46,7 +46,7 @@
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">edit  @yield('title')</h3>
+                <h3 class="box-title">produk  @yield('title')</h3>
 
             </div>
             <!-- /.box-header -->
@@ -54,10 +54,10 @@
             <form role="form" action="/produk/update/" method="POST" enctype="multipart/form-data">
                 <div class="box-body">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $edit->id }}">
+                    <input type="hidden" name="id" value="{{$edit->id }}">
                     <div class="form-group">
                         <label for="nama_produk">ID</label>
-                        <input type="text" class="form-control" id="sku" name="sku" placeholder="" value="{{ $edit->sku }}">
+                        <input type="text" class="form-control" id="sku" name="sku" placeholder="" value="{{$edit->sku }}">
                         <div class="text-danger">
                             @error('sku')
                             {{ $message }}
@@ -66,39 +66,23 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_produk">Nama produk</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama produk" value="{{ $edit->name }}">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama produk" value="{{$edit->name }}">
                         <div class="text-danger">
                             @error('name')
                             {{ $message }}
                             @enderror
                         </div>
                     </div>
-                    {{-- <div class="form-group">
-                        <label for="exampleInputPassword1">Kategori</label>
-                        <select class="form-control select2" name="categry_id">
 
-                            @foreach($kategori as $k)
-                                @if($k->id == $edit->category_id))
-                                <option value="{{ $k->id }}" selected>
-                                    {{ $k->name }}
-                                </option>
-                                @else
-                                <option value="{{ $k->id }}">
-                                    {{ $k->name }}
-                                </option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div> --}}
                     <div class="form-group">
                         <label for="e">Kategori</label>
-                        <select class="form-control select2" name="category_id">
+                        <select class="form-control select2" name="category_id" style="width: 100%">
                             <option></option>
                             @foreach($kategori as $k)
-                            @if($k->id == $edit->category_id))
-                                <option value="{{ $k->id }}" selected>
-                                    {{ $k->name }}
-                                </option>
+                            @if($k->id ==$edit->category_id))
+                            <option value="{{ $k->id }}" selected>
+                                {{ $k->name }}
+                            </option>
                             @else
                             <option value="{{ $k->id }}">
                                 {{ $k->name }}
@@ -114,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_harga">Harga</label>
-                        <input type="text" class="form-control" id="price" name="price" placeholder="Masukan nama harga" value="{{ $edit->price }}">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Masukan nama harga" value="{{$edit->price }}">
                         <div class="text-danger">
                             @error('price')
                             {{ $message }}
@@ -125,7 +109,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama_stok">Stok</label>
-                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Masukan nama stok" value="{{ $edit->stock }}">
+                                <input type="text" class="form-control" id="stock" name="stock" placeholder="Masukan nama stok" value="{{$edit->stock }}">
                                 <div class="text-danger">
                                     @error('stock')
                                     {{ $message }}
@@ -137,7 +121,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nama_satuan">Satuan</label>
-                                <input type="text" class="form-control" id="product_unit" name="product_unit" placeholder="Masukan nama satuan" value="{{ $edit->product_unit }}">
+                                <input type="text" class="form-control" id="product_unit" name="product_unit" placeholder="Masukan nama satuan" value="{{$edit->product_unit }}">
                                 <div class="text-danger">
                                     @error('product_unit')
                                     {{ $message }}
@@ -150,7 +134,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Masukan nama deskripsi" value="{{ $edit->description }}">
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Masukan nama deskripsi" value="{{$edit->description }}">
                         <div class="text-danger">
                             @error('description')
                             {{ $message }}
@@ -164,8 +148,9 @@
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            </div>
+            {{-- </form> --}}
         </div>
+    </div>
 
         <div class="col-md-4">
             <div class="box">
@@ -176,8 +161,8 @@
                             <i class="fa fa-minus"></i></button>
                             <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
                                 <i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
+                    </div>
+                </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="" class="table table-hover">

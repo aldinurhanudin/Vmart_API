@@ -42,6 +42,83 @@
 
 @section('content')
 <div class="row">
+    <div class="col-md-4">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Foto</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table id="" class="table table-hover">
+                    <thead>
+
+
+                            <img src="{{ url('/storage/'.$produk->picture_name) }}" width='100%' height='50%' >
+
+
+
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>coba</th>
+                        </tr>
+
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr >
+                           <td >Nama</td>
+                           <td >:</td>
+                           <td >{{ $produk->name }}</td>
+                        </tr>
+                        <tr >
+                           <td >SKU</td>
+                           <td >:</td>
+                           <td >{{ $produk->sku }}</td>
+                        </tr>
+                        <tr >
+                           <td >Harga</td>
+                           <td >:</td>
+                           <td >{{ $produk->name }}</td>
+                        </tr>
+                        {{-- $kategori:
+                            for ($kategori as $k) {
+                                if($k->id == $produk->category_id))
+                            }($kategori as $k)
+                            if($k->id == $produk->category_id))
+                            {{ $k->id }}{{ $k->name }}
+                            @endforeach; --}}
+
+
+                        <tr >
+                           <td >Diskon</td>
+                           <td >:</td>
+                           <td >{{ $produk->name }}</td>
+                        </tr>
+                        <tr >
+                           <td >Stok/Satuan</td>
+                           <td >:</td>
+                           <td >{{ $produk->name }}</td>
+                        </tr>
+                        <tr >
+                           <td >Deskripsi</td>
+                           <td >:</td>
+                           <td >{{ $produk->name }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <div class="col-md-8">
         <!-- general form elements -->
         <div class="box box-primary">
@@ -148,48 +225,13 @@
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Foto</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                <i class="fa fa-times"></i></button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <table id="" class="table table-hover">
-                                <thead>
-                                    <tr class="text-center">
-
-                                        <td> <img src="{{ url('/storage/'.$produk->picture_name) }}" width='150px' height='100px' ></td>
-
-
-                                    </tr>
-                                    <tr>
-
-                                        <td>
-                                            <input type="file" class="form-control" name="picture_name" id='picture_name' placeholder="" value="{{$produk->picture_name}}">
-                                        </td>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            
             </form>
+        </div>
+    </div>
+</div>
+</div>
 
-            @endsection
+
+@endsection
 
 

@@ -116,7 +116,7 @@
             <div class="box">
                 <div class="box-header">
                             <h3 class="mb-0">Produk baru</h3>
-                            <a href="http://localhost/toko-sayur/index.php/admin/products" class="btn btn-sm btn-primary">Lihat semua</a>
+                            <a href="/produk" class="btn btn-sm btn-primary">Lihat semua</a>
                 </div>
                 <div class="box-body">
                     <div class="table-responsive">
