@@ -82,12 +82,12 @@
                             <tr >
                                <td >Tanggal</td>
                                <td ></td>
-                               <td ></td>
+                               <td >{{ $detail->payment_date }}</td>
                             </tr>
                             <tr >
                                <td >Status</td>
                                <td ></td>
-                               <td ></td>
+                               <td >{{ $detail->confirmed_date }}</td>
                             </tr>
                             {{-- $kategori:
                                 for ($kategori as $k) {
@@ -101,7 +101,7 @@
                             <tr >
                                <td >Transfer ke</td>
                                <td ></td>
-                               <td ></td>
+                               <td >{{ $detail->payment_data }}</td>
                             </tr>
                             <tr >
                                <td >Transfer dari</td>
