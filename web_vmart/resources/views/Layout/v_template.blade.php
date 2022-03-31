@@ -159,7 +159,7 @@
             <div class="pull-right hidden-xs">
 
             </div>
-            <strong>Copyright &copy; 2021 <a href="https://adminlte.io">Kelompok4</a>.</strong> All rights
+            <strong>Copyright &copy; 2022 <a href="https://adminlte.io">Kelompok2</a>.</strong> All rights
             reserved.
         </footer>
 
