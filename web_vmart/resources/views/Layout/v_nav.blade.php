@@ -52,7 +52,7 @@
             </a>
         </li>
         <li class="{{ request()->is('review')? 'active' : '' }}">
-            <a href="/review">
+            <a href="#">
                 <i class="fa  fa-edit "style="color:green"></i>
 
                 <span> Review Pelanggan </span>
