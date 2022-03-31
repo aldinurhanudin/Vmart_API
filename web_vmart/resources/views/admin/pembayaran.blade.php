@@ -1,4 +1,6 @@
-
+@php
+    use Carbon\Carbon;
+@endphp
 @extends("Layout.v_template")
 @section('title','Pembayaran')
 @section('content-header')
@@ -81,7 +83,9 @@
                                         @endif
                                     </td>
                                     {{-- <td>{{ $data->email }}</td> --}}
-                                    <td>{{ $data->payment_date }}</td>
+                                    <td>
+                                        {{ Carbon::createFromFormat('Y-m-d H:i:s', $data->payment_date)->isoFormat('dddd, D MMMM Y H:mm:s') }}
+                                    </td>
                                     <td>{{ $data->payment_price }}</td>
                                     <td>
                                         @if($data->payment_status == 1)
