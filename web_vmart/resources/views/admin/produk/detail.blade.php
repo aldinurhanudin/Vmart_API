@@ -1,6 +1,6 @@
 
 @extends("Layout.v_template")
-@section('title','')
+@section('title','Detail Produk')
 @section('content-header')
 <h1>
     @yield('title')
@@ -67,7 +67,7 @@
                         <tr>
                             <th></th>
                             <th></th>
-                            <th>coba</th>
+
                         </tr>
 
 
@@ -113,24 +113,29 @@
         </div>
     </div>
     <div class="col-md-8">
+
+        @if (session('pesan'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-check"></i> success</h4>
+            {{  session("pesan")  }}
+        </div>
+        @endif
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Order</h3>
+                <h3 class="box-title">Data Order</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fa fa-minus"></i>
-                    </button>
+                    <i class="fa fa-minus"></i></button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fa fa-times"></i>
-                    </button>
+                    <i class="fa fa-times"></i></button>
                 </div>
+
             </div>
-            <div class="box-body">
-                <table id="" class="table table-hover">
+            <!-- /.box-header -->
+            <div class="box-body table-responsive ">
+                <table id="example1" class="table table-hover">
                     <thead>
-
-
-
                         <tr>
                             <th>ID</th>
                             <th>Order</th>
@@ -138,31 +143,40 @@
                             <th>Jumlah</th>
                             <th>Total Harga</th>
                         </tr>
-
-
                     </thead>
 
-                    <?php $no =1; ?>
-                    @foreach ($products as $data )
                     <tbody>
-
+                        <?php $no =1; ?>
+                        @foreach ($order_items as $data )
                         <tr>
                             <td>{{ $no++ }}</td>
 
-                            <td>{{$data->sku}}</td>
-                            <td>{{$data->name}}</td>
-                            <td>{{$data->sku}}</td>
-                            <td>{{$data->sku}}</td>
-
-
+                            <td> @if(empty($data->getOrder->order_number))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                <a href="/pembayaran/view/{{$data->getOrder->id}}">{{ $data->getOrder->order_number }}</a>
+                                @endif</td>
+                            <td> @if(empty($data->getOrder->getCustomer->name))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ $data->getOrder->getCustomer->name }}
+                                @endif</td>
+                            <td>{{$data->order_qty}}</td>
+                            <td>{{$data ->order_price}}</td>
                         </tr>
 
 
+                        @endforeach
                     </tbody>
-                    @endforeach
                 </table>
             </div>
+            <!-- /.box-body -->
         </div>
+        <!-- /.box -->
     </div>
 
 </div>

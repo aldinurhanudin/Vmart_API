@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\product;
+use App\Models\order_item;
 use App\Models\product_category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
@@ -145,7 +146,8 @@ class ProductController extends Controller
         $data = [
             "products" => product::orderBy("id", "DESC")->get(),
             "produk" => product::where("id", $id)->first(),
-            "kategori" => product_category::orderBy("name", "DESC")->get()
+            "kategori" => product_category::orderBy("name", "DESC")->get(),
+            "order_items" => order_item::orderBy("id", "DESC")->get()
         ];
 
         return view("/admin/produk/detail", $data);
