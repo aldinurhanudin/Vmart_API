@@ -1,4 +1,7 @@
 
+@php
+use Carbon\Carbon;
+@endphp
 @extends("Layout.v_template")
 @section('title',' Detail Pembayaran')
 @section('content-header')
@@ -77,25 +80,34 @@
                             <tr >
                                <td >Transfer</td>
                                <td ></td>
-                               <td ></td>
+                               <td >{{$detail->payment_price}}</td>
                             </tr>
                             <tr >
                                <td >Tanggal</td>
                                <td ></td>
-                               <td >{{ $detail->payment_date }}</td>
+                               <td >@if(empty($detail->payment_date))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $detail->payment_date)->isoFormat('dddd, D MMMM Y H:mm:s') }}</a>
+                                @endif</td>
+                               {{-- <td >{{ $detail->payment_date }}</td> --}}
                             </tr>
                             <tr >
                                <td >Status</td>
                                <td ></td>
+                               <td >@if(empty($detail->payment_status))
+                                <span class="badge bg-green">menunggu dikonfirmasi</span>
+                                @elseif($detail->payment_status !=2)
+                                <span class="badge bg-green">menunggu dikonfirmasi</span>
+                                @elseif($detail->payment_status !=1)
+                                <span class="badge bg-green">dikonfirmasi</span>
+                                @endif
+                            </td>
                                <td >{{ $detail->confirmed_date }}</td>
                             </tr>
-                            {{-- $kategori:
-                                for ($kategori as $k) {
-                                    if($k->id == $produk->category_id))
-                                }($kategori as $k)
-                                if($k->id == $produk->category_id))
-                                {{ $k->id }}{{ $k->name }}
-                                @endforeach; --}}
+
 
 
                             <tr >
