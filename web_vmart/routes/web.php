@@ -47,6 +47,8 @@ Route::get('/kategori/edit/{id}', [ProductCategoryController::class, 'edit']);
 Route::post('/kategori/hapus', [ProductCategoryController::class, 'hapus']);
 Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 
+Route::get('/review', [reviewController::class, 'index']);
+
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
 
