@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\DashboardController;
 
 
@@ -47,7 +48,8 @@ Route::get('/kategori/edit/{id}', [ProductCategoryController::class, 'edit']);
 Route::post('/kategori/hapus', [ProductCategoryController::class, 'hapus']);
 Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 
-Route::get('/review', [reviewController::class, 'index']);
+Route::get('/review', [ReviewController::class, 'index']);
+Route::get('/kupon', [CouponController::class, 'index']);
 
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
