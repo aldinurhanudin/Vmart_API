@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\payment;
 use App\Models\product;
+use App\Models\payment;
 use App\Models\customer;
 use App\Models\order;
 
@@ -21,6 +21,7 @@ class HomeController extends Controller
             "jumlah_customer" => customer::count(),
             "jumlah_order" => order::count(),
             "jumlah_payment" => payment::sum('payment_price'),
+            "products" => product::orderBy("id", "DESC")->get()
         ];
         return view('admin/dashboard',$data);
     }

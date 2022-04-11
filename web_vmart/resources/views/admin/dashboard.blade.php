@@ -125,130 +125,100 @@
             </div> --}}
         </div>
         <div class="col-md-6">
+
             <div class="box">
-                <div class="box-header">
-                            <h3 class="mb-0">Produk baru</h3>
-                            <a href="/produk" class="btn btn-sm btn-primary">Lihat semua</a>
-                </div>
-                <div class="box-body">
-                    <div class="table-responsive">
-                        <!-- Projects table -->
-                        <table class="table align-items-center table-flush">
-                          <thead class="thead-light">
-                            <tr>
-                              <th scope="col">ID</th>
-                              <th scope="col">Nama</th>
-                              <th scope="col">Harga</th>
-                              <th scope="col">Stok</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                                            <tr>
-                              <th scope="col">
-                                15                    </th>
-                              <td>
-                                Timun                    </td>
-                              <td>
-                                Rp 8.000,00                    </td>
-                              <td>
-                                1 Kg                    </td>
-                            </tr>
-                                            <tr>
-                              <th scope="col">
-                                14                    </th>
-                              <td>
-                                Cabai Merah                    </td>
-                              <td>
-                                Rp 20.000,00                    </td>
-                              <td>
-                                1 Kg                    </td>
-                            </tr>
-                                            <tr>
-                              <th scope="col">
-                                13                    </th>
-                              <td>
-                                Seledri                    </td>
-                              <td>
-                                Rp 8.000,00                    </td>
-                              <td>
-                                6 Kg                    </td>
-                            </tr>
-                                            <tr>
-                              <th scope="col">
-                                11                    </th>
-                              <td>
-                                Tomat                    </td>
-                              <td>
-                                Rp 10.000,00                    </td>
-                              <td>
-                                1 Kg                    </td>
-                            </tr>
-                                            <tr>
-                              <th scope="col">
-                                10                    </th>
-                              <td>
-                                Sawi                    </td>
-                              <td>
-                                Rp 8.000,00                    </td>
-                              <td>
-                                1 Kg                    </td>
-                            </tr>
-                                          </tbody>
-                        </table>
-                      </div>
+                <div class="box-header with-border">
+                    <h3 class="box-title">Data @yield('title')</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                            <i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                <i class="fa fa-times"></i></button>
+                            </div>
+
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive ">
+                            <table id="example1" class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama</th>
+                                        <th>Harga</th>
+                                        <th>Stok</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <?php $no =1; ?>
+                                    @foreach ($products as $data )
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $data->name }}</td>
+                                        <td>{{ $data->price }}</td>
+                                        <td>{{ $data->stock }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
                     </div>
-                  </div>
+                    <!-- /.box -->
                 </div>
             </div>
+
         </div>
+    </div>
+</div>
 
 
-                @endsection
-                @section('page_scripts')
-                <?php
-                $sekarang = 2021;
-                ?>
-                <script>
-                    $(function () {
-                        var bar_data = {
-                            data : [
-                            ['January', <?php $data = DB::table('orders')->whereMonth('order_date', "01")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['February',<?php $data = DB::table('orders')->whereMonth('order_date', "02")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['March', <?php $data = DB::table('orders')->whereMonth('order_date', "03")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['April', <?php $data = DB::table('orders')->whereMonth('order_date', "04")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['May', <?php $data = DB::table('orders')->whereMonth('order_date', "05")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['June', <?php $data = DB::table('orders')->whereMonth('order_date', "06")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['July', <?php $data = DB::table('orders')->whereMonth('order_date', "07")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['August', <?php $data = DB::table('orders')->whereMonth('order_date', "08")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['September', <?php $data = DB::table('orders')->whereMonth('order_date', "09")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['October', <?php $data = DB::table('orders')->whereMonth('order_date', "10")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['November', <?php $data = DB::table('orders')->whereMonth('order_date', "11")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
-                            ['Desember', <?php $data = DB::table('orders')->whereMonth('order_date', "12")->whereYear('order_date', $sekarang)->count(); echo $data ?>]
-                            ],
-                            color: '#3c8dbc'
-                        }
-                        $.plot('#bar-chart', [bar_data], {
-                            grid  : {
-                                borderWidth: 1,
-                                borderColor: '#f3f3f3',
-                                tickColor  : '#f3f3f3'
-                            },
-                            series: {
-                                bars: {
-                                    show    : true,
-                                    barWidth: 0.5,
-                                    align   : 'center'
-                                }
-                            },
-                            xaxis : {
-                                mode      : 'categories',
-                                tickLength: 0
-                            }
-                        })
-                    })
+@endsection
+@section('page_scripts')
+<?php
+$sekarang = 2021;
+?>
+<script>
+    $(function () {
+        var bar_data = {
+            data : [
+            ['January', <?php $data = DB::table('orders')->whereMonth('order_date', "01")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['February',<?php $data = DB::table('orders')->whereMonth('order_date', "02")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['March', <?php $data = DB::table('orders')->whereMonth('order_date', "03")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['April', <?php $data = DB::table('orders')->whereMonth('order_date', "04")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['May', <?php $data = DB::table('orders')->whereMonth('order_date', "05")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['June', <?php $data = DB::table('orders')->whereMonth('order_date', "06")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['July', <?php $data = DB::table('orders')->whereMonth('order_date', "07")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['August', <?php $data = DB::table('orders')->whereMonth('order_date', "08")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['September', <?php $data = DB::table('orders')->whereMonth('order_date', "09")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['October', <?php $data = DB::table('orders')->whereMonth('order_date', "10")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['November', <?php $data = DB::table('orders')->whereMonth('order_date', "11")->whereYear('order_date', $sekarang)->count(); echo $data ?>],
+            ['Desember', <?php $data = DB::table('orders')->whereMonth('order_date', "12")->whereYear('order_date', $sekarang)->count(); echo $data ?>]
+            ],
+            color: '#3c8dbc'
+        }
+        $.plot('#bar-chart', [bar_data], {
+            grid  : {
+                borderWidth: 1,
+                borderColor: '#f3f3f3',
+                tickColor  : '#f3f3f3'
+            },
+            series: {
+                bars: {
+                    show    : true,
+                    barWidth: 0.5,
+                    align   : 'center'
+                }
+            },
+            xaxis : {
+                mode      : 'categories',
+                tickLength: 0
+            }
+        })
+    })
 
-                </script>
+</script>
 
 
-                @endsection
+@endsection
 
