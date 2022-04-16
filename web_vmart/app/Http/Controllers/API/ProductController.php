@@ -9,12 +9,11 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     public function index(){
-        $data = [
 
-            "products" => product::orderBy("id", "DESC")->get()
-        ];
+        $data = product::all();
+
         // return view('/admin/produk/produk', $data);
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return response()->json(['messege' => 'request success', 'data'=>$data],200);
     }
 
     public function sku(){
@@ -52,94 +51,29 @@ class ProductController extends Controller
     }
     public function insert(Request $request){
 
-        $message = [
-            'sku.required' => 'wajib diisi!!',
-
-            'category_id.required' => 'wajib diisi!!',
-            'name.required' => 'wajib diisi!!',
-            'description.required' => 'wajib diisi!!',
-            'picture_name.required' => 'wajib diisi!!',
-            'price.required' => 'wajib diisi!!',
-            'stock.required' => 'wajib diisi!!',
-            'product_unit.required' => 'wajib diisi!!',
-
-            ];
-
-        $validateData = $this->validate($request, [
-            "category_id" => "required",
-            'sku' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'picture_name' => 'required',
-            'product_unit' => 'required',
-            'price' => 'required',
-            'stock' => 'required',
-            ], $message);
-
-        // $validateData = $request->validate([
-        //     "category_id" => "required",
-        //     'sku' => 'required',
-        //     'name' => 'required',
-        //     'description' => 'required',
-        //     'picture_name' => 'required',
-        //     'price' => 'required',
-        //     'stock' => 'required',
-        // ]);
-
-        if ($request->file("picture_name")) {
-
-            $validateData['picture_name'] = $request->file("picture_name")->store("post-image");
-
-        }
 
 
-        product::create($validateData);
 
-        return redirect('/produk')->with('pesan','data berhasil di tambahkan');
+        $data = product::create($request->all());
+        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        //return redirect('/produk')->with('pesan','data berhasil di tambahkan');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
+        $product = product::find($id);
+        $product->update($request->all());
 
 
-        $validateData = $this->validate($request, [
-            "category_id" => "required",
-            'sku' => 'required',
-            //'picture_name' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'product_unit' => 'required',
-            'price' => 'required',
-            'stock' => 'required'
-        ]);
-
-        // product::where("id", $request->id)->update([
-        //     'category_id' => $request->category_id,
-        //     "sku" => $request->sku,
-        //     "name" => $request->name,
-        //     "description" => $request->description,
-        //     "product_unit" => $request->product_unit,
-        //     'price'=> $request->price,
-        //     'stock'=> $request->stock,
-        // ]);
-        if ($request->file("picture_name")) {
-
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
-
-            $validateData['picture_name'] = $request->file("picture_name")->store("image");
-        }
-        product::where("id", $request->id)->update($validateData);
-       // dd($validateData);
-
-        return redirect("/produk");
+        return response()->json(['messege' => 'request success', 'data' => $product],200);
     }
-    public function hapus(Request $request)
+    public function destroy($id)
     {
-        product::where("id", $request->id)->delete();
+        $product = product::find($id);
+        $product->delete();
 
-        return redirect('/produk')->with('pesan','data berhasil di hapus');
+
+        return response()->json(['messege' => 'request success', 'data' => null],200);
     }
 }

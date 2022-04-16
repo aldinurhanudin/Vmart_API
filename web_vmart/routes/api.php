@@ -59,8 +59,8 @@ Route::get('/produk', [productController::class, 'index']);
 Route::get('/produk/add', [productController::class, 'add']);
 Route::post('/produk/insert', [productController::class, 'insert']);
 Route::get('/produk/edit/{id}', [productController::class, 'edit']);
-Route::post('/produk/update/', [productController::class, 'update']);
-Route::get('/produk/hapus/{id}', [productController::class, 'hapus']);
+Route::put('/produk/{id}', [productController::class, 'update']);
+Route::delete('/produk/{id}', [productController::class, 'destroy']);
 
 
 Route::get('/kupon', function () {
