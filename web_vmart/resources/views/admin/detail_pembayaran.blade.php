@@ -117,6 +117,7 @@ $payment_from = json_decode($detail->payment_data);
                                <td >{{ $payment_from->transfer_to }}</td>
                             </tr>
                             <tr >
+                                // revisi
                                <td >Transfer dari</td>
                                <td ></td>
                                <td >{{ $payment_from->source->bank }} a.n. {{ $payment_from->source->name }}</td>
