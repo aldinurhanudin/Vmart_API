@@ -82,7 +82,7 @@
     </div>
 </div>
 
-@foreach ( $customers as $data)
+@foreach ( $coupon as $data)
 
 
 <div class="modal modal-danger fade" id="delete{{ $data->id }}">
