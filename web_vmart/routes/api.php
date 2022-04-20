@@ -39,8 +39,16 @@ Route::get('/logout', [LoginController::class, 'logout']);//->middleware('admin'
 
 Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
 Route::get('/pesanan', [orderController::class, 'index']);
+Route::post('/pesanan/insert', [orderController::class, 'index']);
+Route::put('/pesanan/{id}', [orderController::class, 'index']);
+Route::delete('/pesanan/{id}', [orderController::class, 'index']);
 
 Route::get('/pembayaran', [PaymentController::class, 'index']);//->middleware('admin');
+Route::post('/pembayaran/insert', [PaymentController::class, 'insert']);//->middleware('admin');
+Route::get('/pembayaran/edit/{id}', [PaymentController::class, 'edit']);//->middleware('admin');
+Route::put('/pembayaran/{id}', [PaymentController::class, 'put']);//->middleware('admin');
+Route::delete('/pembayaran/{id}', [PaymentController::class, 'destroy']);//->middleware('admin');
+
 Route::get('/kategori', [ProductCategoryController::class, 'index'])->name('kategori');
 Route::post('/kategori/insert', [ProductCategoryController::class, 'insert']);
 Route::get('/kategori/edit/{id}', [ProductCategoryController::class, 'edit']);
