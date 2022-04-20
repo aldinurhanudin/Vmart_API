@@ -13,4 +13,10 @@ class CouponController extends Controller
         ];
         return view('/admin/kupon', $data);
     }
+    public function delete(Request $request)
+    {
+        coupon::where("id", $request->id)->delete();
+
+        return redirect('/kupon')->with('pesan','data berhasil di hapus');
+    }
 }
