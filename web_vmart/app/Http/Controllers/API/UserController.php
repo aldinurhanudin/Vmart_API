@@ -14,9 +14,9 @@ class USerController extends Controller
         // ];
         return view('/admin/setting/profile/');
     }
-    public function detail($id_anggota){
+    public function detail(){
         $data = [
-            "anggota" => AnggotaModel::where("id_anggota", $id_anggota)->first(),
+            "anggota" => User::all(),
 
         ];
 
@@ -27,22 +27,22 @@ class USerController extends Controller
 
     public function insert(Request $request){
 
-        $message = [
-            'name.required' => 'wajib diisi!!',
-            'email.required' => 'wajib diisi!!',
-            'email.unique' => 'email ini sudah ada!!!',
-            'username.required' => 'wajib diisi!!',
-            'password.required' => 'wajib diisi!!',
-            'password.min' => 'Min 5 Karakter',
+        // $message = [
+        //     'name.required' => 'wajib diisi!!',
+        //     'email.required' => 'wajib diisi!!',
+        //     'email.unique' => 'email ini sudah ada!!!',
+        //     'username.required' => 'wajib diisi!!',
+        //     'password.required' => 'wajib diisi!!',
+        //     'password.min' => 'Min 5 Karakter',
 
-        ];
+        // ];
 
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email:dns|unique:users',
-            'username' => 'required',
-            'password' => 'required|min:5|max:255',
-        ], $message);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required|email:dns|unique:users',
+        //     'username' => 'required',
+        //     'password' => 'required|min:5|max:255',
+        // ], $message);
 
 
         User::create([
@@ -53,7 +53,7 @@ class USerController extends Controller
         ]);
 
         //return redirect()->route('profile')->with('pesan','data berhasil di tambahkan');
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return response()->json(['messege' => 'request success'],200);
     }
 
     public function edit($id){
@@ -73,25 +73,25 @@ class USerController extends Controller
 
     public function update(Request $request){
 
-        $message = [
-            'name.required' => 'wajib diisi!!',
-            'username.required' => 'wajib diisi!!',
-            //'name.min' => 'Min 4 Karakter',
-            'email.required' => 'wajib diisi!!',
-            'email.email' => 'masukan email yang benar',
-            'email.unique' => 'email ini sudah ada!!!',
-            'password.required' => 'wajib diisi!!',
-            'password.min' => 'Min 5 Karakter',
-            //'password.max' => 'Max 255 Karakter',
+        // $message = [
+        //     'name.required' => 'wajib diisi!!',
+        //     'username.required' => 'wajib diisi!!',
+        //     //'name.min' => 'Min 4 Karakter',
+        //     'email.required' => 'wajib diisi!!',
+        //     'email.email' => 'masukan email yang benar',
+        //     'email.unique' => 'email ini sudah ada!!!',
+        //     'password.required' => 'wajib diisi!!',
+        //     'password.min' => 'Min 5 Karakter',
+        //     //'password.max' => 'Max 255 Karakter',
 
-        ];
+        // ];
 
-        $this->validate($request, [
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required|email:dns',
-            'password' => 'required|min:5|max:255',
-        ], $message);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'username' => 'required',
+        //     'email' => 'required|email:dns',
+        //     'password' => 'required|min:5|max:255',
+        // ], $message);
 
 
         User::where("id", $request->id)->update([
@@ -109,7 +109,15 @@ class USerController extends Controller
         // DB::table('users')->insert($data);
 
         //return redirect()->back()->with('pesan','data berhasil di tambahkan');
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+        return response()->json(['messege' => 'request success'],200);
+
+    }
+    public function destroy($id)
+    {
+        User::where("id", $id)->delete();
+
+        return response()->json('Program deleted successfully');
+        //  return redirect("/kategori");
     }
 
 }
