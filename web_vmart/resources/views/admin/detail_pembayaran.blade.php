@@ -1,6 +1,7 @@
 
 @php
 use Carbon\Carbon;
+$payment_from = json_decode($detail->payment_data);
 @endphp
 @extends("Layout.v_template")
 @section('title',' Detail Pembayaran')
@@ -113,12 +114,13 @@ use Carbon\Carbon;
                             <tr >
                                <td >Transfer ke</td>
                                <td ></td>
-                               <td >{{ $detail->payment_data }}</td>
+                               <td >{{ $payment_from->transfer_to }}</td>
                             </tr>
                             <tr >
+                                // revisi
                                <td >Transfer dari</td>
                                <td ></td>
-                               <td ></td>
+                               <td >{{ $payment_from->source->bank }} a.n. {{ $payment_from->source->name }}</td>
                             </tr>
 
                         </tbody>

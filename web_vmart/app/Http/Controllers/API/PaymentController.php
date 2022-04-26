@@ -9,13 +9,39 @@ use Illuminate\Support\Facades\DB;
 class PaymentController extends Controller
 {
     public function index(){
-        $data = [
 
-            "payments" => payment::orderBy("id", "DESC")->get(),
-            "customer" => customer::orderBy("id", "DESC")->get(),
-        ];
-        // return view('/admin/pembayaran', $data);
+        $data = payment::all();
+
+
+        return response()->json(['messege' => 'request success', 'data'=>$data],200);
+    }
+
+    public function insert(Request $request){
+
+
+
+
+        $data = payment::create($request->all());
         return response()->json(['messege' => 'request success', 'data' => $data],200);
+
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $payment = payment::find($id);
+        $payment->update($request->all());
+
+
+        return response()->json(['messege' => 'request success', 'data' => $payment],200);
+    }
+    public function destroy($id)
+    {
+        $payment = payment::find($id);
+        $payment->delete();
+
+
+        return response()->json(['messege' => 'request success', 'data' => null],200);
     }
 
 
