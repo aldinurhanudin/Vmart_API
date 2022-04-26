@@ -71,6 +71,29 @@ Route::put('/produk/{id}', [productController::class, 'update']);
 Route::delete('/produk/{id}', [productController::class, 'destroy']);
 
 
+Route::get('/setting/profile/', [UserController::class, 'detail']);
+Route::post('/setting/profile/', [UserController::class, 'insert']);
+Route::get('/setting/profile/{id}', [UserController::class, 'edit']);
+Route::put('/profile/update', [UserController::class, 'update']);
+Route::get('/profile/delete/{id}', [UserController::class, 'destroy']);
+// Route::get('/produk', [UserController::class, 'index']);
+// Route::delete('/produk/{id}', [UserController::class, 'destroy']);
+
+// Route::get('/produk', [productController::class, 'index']);
+// Route::get('/produk/add', [productController::class, 'add']);
+// Route::post('/produk/insert', [productController::class, 'insert']);
+// Route::get('/produk/edit/{id}', [productController::class, 'edit']);
+// Route::put('/produk/{id}', [productController::class, 'update']);
+// Route::delete('/produk/{id}', [productController::class, 'destroy']);
+
+
+Route::get('/kategori', [ProductCategoryController::class, 'index'])->name('kategori');
+Route::post('/kategori/insert', [ProductCategoryController::class, 'insert']);
+Route::get('/kategori/edit/{id}', [ProductCategoryController::class, 'edit']);
+Route::post('/kategori/delete/{id}', [ProductCategoryController::class, 'destroy']);
+Route::post('/kategori/update/{id}', [ProductCategoryController::class, 'update']);
+
+
 Route::get('/kupon', function () {
     return view('admin/kupon');
 });

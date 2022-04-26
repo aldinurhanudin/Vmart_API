@@ -117,7 +117,7 @@ $payment_from = json_decode($detail->payment_data);
                                <td >{{ $payment_from->transfer_to }}</td>
                             </tr>
                             <tr >
-                                // revisi
+
                                <td >Transfer dari</td>
                                <td ></td>
                                <td >{{ $payment_from->source->bank }} a.n. {{ $payment_from->source->name }}</td>
@@ -146,10 +146,61 @@ $payment_from = json_decode($detail->payment_data);
                             <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
                                 <i class="fa fa-times"></i></button>
                             </div>
+
                         </div>
 
+                        {{-- <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div> --}}
+
+                    </div>
+                    <div class="box-body">
+                        <table id="" class="table table-hover">
+                            <thead>
+
+
+                                    <img src="http://127.0.0.1:8000/storage/https://bit.ly/3EmpJvm" width='100%' height='50%' >
+
+
+
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+
+
+                            </thead>
+                        </div>
+
+
+
+                        <div class="card-footer">
+                            <form action="http://localhost/toko-sayur/index.php/admin/payments/verify" method="POST">
+                            <input type="hidden" name="redir" value="1">
+
+                            <div class="row">
+                              <input type="hidden" name="id" value="7">
+                              <input type="hidden" name="order" value="13">
+                                <div class="col-md-9">
+                                    <select class="form-control" name="action">
+                                                                          <option value="1">Konfirmasi Pembayaran</option>
+                                        <option value="2">Pembayaran Tidak Ada</option>
+                                                                      </select>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <input type="submit" class="btn btn-primary" value="OK">
+                                </div>
+                            </div>
+                            </form>
+                        </div>
                         <!-- /.box-header -->
-                        <div class="box-body">
+                        {{-- <div class="box-body">
                             <table id="" class="table table-hover">
                                 <thead>
                                     <tr>
@@ -168,10 +219,10 @@ $payment_from = json_decode($detail->payment_data);
 
                                 </tbody>
                             </table>
-                        </div>
-                        <div class="box-footer">
+                        </div> --}}
+                        {{-- <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Oke</button>
-                        </div>
+                        </div> --}}
                     </div>
 
                 </div>
