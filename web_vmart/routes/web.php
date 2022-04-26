@@ -68,7 +68,13 @@ Route::get('/produk/detail/{id}', [productController::class, 'detail']);
 Route::post('/produk/update/', [productController::class, 'update']);
 Route::get('/produk/hapus/{id}', [productController::class, 'hapus']);
 
-Route::get('/kupon', [CouponController::class, 'index']);
-Route::get('/kupon', function () {
-    return view('admin/kupon');
-});
+Route::get('/kupon', [CouponController::class, 'index'])->name('kupon');
+Route::post('/kupon/insert', [CouponController::class, 'insert']);
+Route::get('/kupon/edit/{id}', [CouponController::class, 'edit']);
+Route::post('/kupon/hapus', [CouponController::class, 'hapus']);
+Route::post('/kupon/update', [CouponController::class, 'update']);
+// Route::get('/kupon', [CouponController::class, 'index']);
+// Route::get('/kupon', function () {
+//     return view('admin/kupon');
+// }
+// );

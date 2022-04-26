@@ -1,6 +1,6 @@
 
 @extends("Layout.v_template")
-@section('title','Kupon')
+@section('title','edit kupon')
 @section('content-header')
 <h1>
     @yield('title')
@@ -12,61 +12,33 @@
     <li class="active">@yield('title')</li>
   </ol>
 @endsection
-@section("page_scripts")
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-@if(session("gagal"))
-
-<script>
-    Swal.fire(
-    'Gagal!',
-    '{{ session("gagal") }}',
-    'error'
-    )
-</script>
-
-@elseif(session("sukses"))
-
-<script>
-    Swal.fire(
-    'Berhasil!',
-    '{{ session("sukses") }}',
-    'success'
-    )
-</script>
-
-@endif
-
-@endsection
-
 @section('content')
 <div class="row">
     <div class="col-md-6">
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Tambah @yield('title')</h3>
-
+                <h3 class="box-title">@yield('title')</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="/kupon/insert" method="POST" enctype="multipart/form-data">
+            <form role="form" action="/kupon/update" method="POST" enctype="multipart/form-data">
                 <div class="box-body">
                     {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{ $edit->id }}">
                     <div class="form-group">
-                        <label for="nama_kupon">Nama kupon</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Masukan nama kupon" value="{{ old('name') }}"required>
+                        <label for="">Nama kupon</label>
+                        <input type="text" class="form-control"  name="name" placeholder="Masukan nama kupon" value="{{ $edit->name }}">
                         <label for="kode">Kode</label>
-                        <input type="text" class="form-control" id="code" name="code" placeholder="Masukan kode" value="{{ old('kode') }}"required>
+                        <input type="text" class="form-control" name="code" placeholder="Masukan kode" value="{{ $edit->code }}"required>
                         <label for="potongan">Potongan</label>
-                        <input type="text" class="form-control" id="credit" name="credit" placeholder="Masukan Potongan" value="{{ old('credit') }}"required>
+                        <input type="text" class="form-control" id="credit" name="credit" placeholder="Masukan Potongan" value="{{ $edit->credit }}"required>
                         <label for="tgl mulai kupon">Tgl mulai kupon</label>
                         <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
-                            <input name="start_date" class="form-control" placeholder="Tanggal Mulai" type="date" required>
+                            <input name="start_date" class="form-control" placeholder="Tanggal Mulai" type="date" value="{{ $edit->start_date }}" required>
                         <label for="tgl berakhir kupon">Tgl berakhir kupon</label>
                         <span class="input-group-text"><i class="fa fa-calendar-alt"></i></span>
-                            <input name="expired_date" class="form-control" placeholder="Tanggal kadaluarsa" type="date" required>
+                            <input name="expired_date" class="form-control" placeholder="Tanggal kadaluarsa" type="date"value="{{ $edit->expired_date }}" required>
                     </div>
                 </div>
 
@@ -82,7 +54,7 @@
     <div class="col-md-6">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Data @yield('title')</h3>
+                <h3 class="box-title">Data Kupon</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                     <i class="fa fa-minus"></i></button>
@@ -97,20 +69,15 @@
                         <tr>
                             <th style="width: 10px">No</th>
                             <th>Nama Kupon</th>
-
-                            <th>Kode</th>
-                            <th>Potongan</th>
-                            <th>Tanggal mulai</th>
-                            <th>Tanggal selesai</th>
+                            <th>Label</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $no =1; ?>
-                        @foreach ($coupon as $data )
+                    <?php $no =1; ?>
+                    @foreach ($coupon as $data )
                         <tr>
                             <td>{{ $no++ }}</td>
-
-                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->name}}</td>
                             <td>{{ $data->code }}</td>
                             <td>{{ $data->credit }}</td>
                             <td>{{ $data->start_date }}</td>
@@ -127,9 +94,7 @@
                                 </form>
                             </td>
 
-
                         </tr>
-
                         @endforeach
                     </tbody>
                 </table>
