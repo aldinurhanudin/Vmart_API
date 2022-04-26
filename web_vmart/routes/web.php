@@ -49,7 +49,7 @@ Route::post('/kategori/hapus', [ProductCategoryController::class, 'hapus']);
 Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 
 Route::get('/review', [ReviewController::class, 'index']);
-Route::get('/kupon', [CouponController::class, 'index']);
+
 
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
@@ -68,7 +68,7 @@ Route::get('/produk/detail/{id}', [productController::class, 'detail']);
 Route::post('/produk/update/', [productController::class, 'update']);
 Route::get('/produk/hapus/{id}', [productController::class, 'hapus']);
 
-
+Route::get('/kupon', [CouponController::class, 'index']);
 Route::get('/kupon', function () {
     return view('admin/kupon');
 });
