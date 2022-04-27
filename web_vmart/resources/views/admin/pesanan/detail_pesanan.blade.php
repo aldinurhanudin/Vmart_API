@@ -1,7 +1,7 @@
 
 @php
 use Carbon\Carbon;
-$payment_from = json_decode($detail->payment_data);
+$order_from = json_decode($detail->order_data);
 @endphp
 @extends("Layout.v_template")
 @section('title',' Detail Pesanan')
@@ -181,7 +181,7 @@ $payment_from = json_decode($detail->payment_data);
 
 
                         <div class="card-footer">
-                            <form action="http://localhost/toko-sayur/index.php/admin/payments/verify" method="POST">
+                            <form action="http://localhost/toko-sayur/index.php/admin/orders/status" method="POST">
                             <input type="hidden" name="redir" value="1">
 
                             <div class="row">
