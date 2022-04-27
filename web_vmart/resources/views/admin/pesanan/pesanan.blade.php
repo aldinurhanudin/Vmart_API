@@ -61,7 +61,17 @@
                         @foreach ($orders as $data )
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $data->order_number }}</td>
+                            <td>
+                                @if(empty($data->order_number))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{-- {{ $data->order_number }} --}}
+                                <a href="{{url('/pesanan/view')}}/{{$data->id}}">{{ $data->order_number }}</a>
+                                @endif
+                            </td>
+                            {{-- <td>{{ $data->order_number }}</td> --}}
                             {{-- <td>{{ $data->getCustomer->name }}</td> --}}
                             <td>
                                 @if(empty($data->getCustomer->name))

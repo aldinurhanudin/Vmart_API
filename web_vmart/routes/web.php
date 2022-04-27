@@ -38,7 +38,9 @@ Route::post('/post_login', [LoginController::class, 'post_login']);
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('admin');
 
 Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
-Route::get('/pesanan', [orderController::class, 'index']);
+Route::get('/pesanan', [orderController::class, 'index'])->middleware('admin');
+Route::get('/pesanan/view/{id}', [orderController::class, 'view'])->middleware('admin');
+Route::get('/pesanan/detail/{id}', [orderController::class, 'detail']);
 
 Route::get('/pembayaran', [PaymentController::class, 'index'])->middleware('admin');
 Route::get('/pembayaran/view/{id}', [PaymentController::class, 'view'])->middleware('admin');

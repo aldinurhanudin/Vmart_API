@@ -12,7 +12,7 @@ class CouponController extends Controller
 
             "coupon" => coupon::orderBy("id", "DESC")->get()
         ];
-        return view('/admin/kupon', $data);
+        return view('/admin/kupon/kupon', $data);
     }
 
     public function edit($id){
