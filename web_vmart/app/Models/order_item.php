@@ -21,4 +21,11 @@ class order_item extends Model
         // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
         return $this->hasOne("App\Models\order", "id", "order_id");
     }
+    public function getProduk()
+    {
+        // SELECT * FROM buku JOIN kategori ON buku.id_kategori = kategori.id_kategori
+
+        // return $this->belongsTo(ModelYangInginDiJoin, AtributJoinChild , AtributJoinParent)
+        return $this->hasOne("App\Models\product", "id", "product_id");
+    }
 }

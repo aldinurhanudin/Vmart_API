@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactController;
 use App\Http\Controllers\API\PaymentController;
 use App\Http\Controllers\API\OrderController;
+use App\Http\Controllers\API\OrderItemController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\ProductCategoryController;
 use App\Http\Controllers\API\ReviewController;
@@ -69,6 +70,20 @@ Route::post('/produk/insert', [productController::class, 'insert']);
 Route::get('/produk/edit/{id}', [productController::class, 'edit']);
 Route::put('/produk/{id}', [productController::class, 'update']);
 Route::delete('/produk/{id}', [productController::class, 'destroy']);
+
+Route::get('/item', [OrderItemController::class, 'index']);
+Route::get('/item/add', [OrderItemController::class, 'add']);
+Route::post('/item/insert', [OrderItemController::class, 'insert']);
+Route::get('/item/edit/{id}', [OrderItemController::class, 'edit']);
+Route::put('/item/{id}', [OrderItemController::class, 'update']);
+Route::delete('/item/{id}', [OrderItemController::class, 'destroy']);
+
+Route::get('/order', [OrderController::class, 'index']);
+Route::get('/order/add', [OrderController::class, 'add']);
+Route::post('/order/insert', [OrderController::class, 'insert']);
+Route::get('/order/edit/{id}', [OrderController::class, 'edit']);
+Route::put('/order/{id}', [OrderController::class, 'update']);
+Route::delete('/order/{id}', [OrderController::class, 'destroy']);
 
 
 Route::get('/setting/profile/', [UserController::class, 'detail']);
