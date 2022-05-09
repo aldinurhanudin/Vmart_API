@@ -194,43 +194,18 @@ use Carbon\Carbon;
                                     <tr >
                                        <td >Nama</td>
                                        <td ></td>
-                                       {{-- <td >{{$customers->address}}</td> --}}
+                                       <td >{{$detail->getCustomer->name}}</td>
                                     </tr>
 
                                     <tr >
                                        <td >No.hp</td>
                                        <td ></td>
-                                       <td >{{$detail->order_status}}</td>
+                                       <td >{{$detail->getCustomer->phone_number}}</td>
                                     </tr>
                                     <tr >
                                        <td >alamat</td>
                                        <td ></td>
-                                       <td >{{$detail->total_price}}</td>
-                                    </tr>
-                                    <tr >
-                                       <td >Methode Pembayaran</td>
-                                       <td ></td>
-                                       <td >@if(empty($detail->payment_method))
-                                        <span>tranfer bank</span>
-                                        @elseif($detail->order_status !=2)
-                                        <span >COD</span>
-                                        @elseif($detail->order_status !=1)
-                                        <span >dikonfirmasi</span>
-                                        @endif
-                                    </tr>
-
-                                    <tr >
-                                       <td >Status</td>
-                                       <td ></td>
-                                       <td >@if(empty($detail->order_status))
-                                        <span class="badge bg-green">menunggu pembayaran</span>
-                                        @elseif($detail->order_status !=2)
-                                        <span class="badge bg-green">menunggu pembayaran</span>
-                                        @elseif($detail->order_status !=1)
-                                        <span class="badge bg-green">dikonfirmasi</span>
-                                        @endif
-                                    </td>
-                                       <td >{{ $detail->confirmed_date }}</td>
+                                       <td >{{$detail->getCustomer->address}}</td>
                                     </tr>
 
 
@@ -269,6 +244,12 @@ use Carbon\Carbon;
 
                                 <tbody>
 
+                                    <tr >
+                                       <td >Gambar</td>
+                                       <td ></td>
+                                       <td ><img class="img img-fluid rounded" style="width: 60px; height: 60px;"  src="http://localhost/toko-sayur/assets/uploads/products/https://bit.ly/3rwd97G"></td>
+                                       {{-- <td >{{$products->picture_name}}</td> --}}
+                                    </tr>
                                     <tr >
                                        <td >Produk</td>
                                        <td ></td>
