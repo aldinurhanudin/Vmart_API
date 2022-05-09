@@ -1,7 +1,7 @@
 
 @php
 use Carbon\Carbon;
-$order_from = json_decode($detail->order_data);
+// $order_from = json_decode($detail->delivery_data);
 @endphp
 @extends("Layout.v_template")
 @section('title',' Detail Pesanan')
@@ -81,7 +81,7 @@ $order_from = json_decode($detail->order_data);
                             <tr >
                                <td >Transfer</td>
                                <td ></td>
-                               <td >{{$detail->total_price}}</td>
+                               {{-- <td >{{$detail->total_price}}</td> --}}
                             </tr>
                             <tr >
                                <td >Tanggal</td>
@@ -91,7 +91,7 @@ $order_from = json_decode($detail->order_data);
                                     <b>NULL</b>
                                 </i>
                                 @else
-                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $detail->payment_date)->isoFormat('dddd, D MMMM Y H:mm:s') }}</a>
+                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $detail->order_date)->isoFormat('dddd, D MMMM Y H:mm:s') }}</a>
                                 @endif</td>
                                {{-- <td >{{ $detail->payment_date }}</td> --}}
                             </tr>
@@ -106,7 +106,7 @@ $order_from = json_decode($detail->order_data);
                                 <span class="badge bg-green">dikonfirmasi</span>
                                 @endif
                             </td>
-                               <td >{{ $detail->confirmed_date }}</td>
+                               {{-- <td >{{ $detail->confirmed_date }}</td> --}}
                             </tr>
 
 
@@ -114,13 +114,13 @@ $order_from = json_decode($detail->order_data);
                             <tr >
                                <td >Transfer ke</td>
                                <td ></td>
-                               <td >{{ $payment_from->transfer_to }}</td>
+                               {{-- <td >{{ $order_from->transfer_to }}</td> --}}
                             </tr>
                             <tr >
 
                                <td >Transfer dari</td>
                                <td ></td>
-                               <td >{{ $payment_from->source->bank }} a.n. {{ $payment_from->source->name }}</td>
+                               {{-- <td >{{ $order_from->source->bank }} a.n. {{ $order_from->source->name }}</td> --}}
                             </tr>
 
                         </tbody>
