@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ContactController;
 use App\Http\Controllers\API\PaymentController;
 use App\Http\Controllers\API\OrderController;
@@ -28,6 +29,8 @@ use App\Http\Controllers\API\UserController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post("/sign_in", [AuthController::class, "sign_in"]);
 
 Route::get('/', [HomeController::class, 'index']);//->middleware('admin');
 
@@ -86,9 +89,9 @@ Route::put('/order/{id}', [OrderController::class, 'update']);
 Route::delete('/order/{id}', [OrderController::class, 'destroy']);
 
 
-Route::get('/setting/profile/', [UserController::class, 'detail']);
-Route::post('/setting/profile/', [UserController::class, 'insert']);
-Route::get('/setting/profile/{id}', [UserController::class, 'edit']);
+Route::get('/profile', [UserController::class, 'index']);
+Route::post('/profile', [UserController::class, 'insert']);
+Route::get('/profile/{id}', [UserController::class, 'edit']);
 Route::put('/profile/update', [UserController::class, 'update']);
 Route::get('/profile/delete/{id}', [UserController::class, 'destroy']);
 // Route::get('/produk', [UserController::class, 'index']);
