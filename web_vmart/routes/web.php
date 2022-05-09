@@ -38,7 +38,9 @@ Route::post('/post_login', [LoginController::class, 'post_login']);
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('admin');
 
 Route::get('/kontak', [contactController::class, 'index'])->name('kontak');
-Route::get('/pesanan', [orderController::class, 'index']);
+Route::get('/pesanan', [orderController::class, 'index'])->middleware('admin');
+Route::get('/pesanan/view/{id}', [orderController::class, 'view'])->middleware('admin');
+
 
 Route::get('/pembayaran', [PaymentController::class, 'index'])->middleware('admin');
 Route::get('/pembayaran/view/{id}', [PaymentController::class, 'view'])->middleware('admin');
@@ -49,7 +51,7 @@ Route::post('/kategori/hapus', [ProductCategoryController::class, 'hapus']);
 Route::post('/kategori/update', [ProductCategoryController::class, 'update']);
 
 Route::get('/review', [ReviewController::class, 'index']);
-Route::get('/kupon', [CouponController::class, 'index']);
+
 
 Route::get('/pelanggan', [CustomerController::class, 'index']);
 Route::get('/pelanggan/delete/{id}', [CustomerController::class, 'delete']);
@@ -68,7 +70,13 @@ Route::get('/produk/detail/{id}', [productController::class, 'detail']);
 Route::post('/produk/update/', [productController::class, 'update']);
 Route::get('/produk/hapus/{id}', [productController::class, 'hapus']);
 
-
-Route::get('/kupon', function () {
-    return view('admin/kupon');
-});
+Route::get('/kupon', [CouponController::class, 'index'])->name('kupon');
+Route::post('/kupon/insert', [CouponController::class, 'insert']);
+Route::get('/kupon/edit/{id}', [CouponController::class, 'edit']);
+Route::post('/kupon/hapus', [CouponController::class, 'hapus']);
+Route::post('/kupon/update', [CouponController::class, 'update']);
+// Route::get('/kupon', [CouponController::class, 'index']);
+// Route::get('/kupon', function () {
+//     return view('admin/kupon');
+// }
+// );

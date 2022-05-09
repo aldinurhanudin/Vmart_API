@@ -26,7 +26,7 @@ class PaymentController extends Controller
         ];
     return view('/admin/detail_pembayaran', $data);
     }
-    // public function detail($id){
+    //public function detail($id){
     //     $data = [
     //         //"kategoi" => product_category::orderBy("id", "DESC")->get(),
     //         "detail" => payment::where("id", $id)->first(),
