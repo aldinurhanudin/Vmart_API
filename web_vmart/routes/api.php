@@ -97,6 +97,18 @@ Route::get('/profile/delete/{id}', [UserController::class, 'destroy']);
 // Route::get('/produk', [UserController::class, 'index']);
 // Route::delete('/produk/{id}', [UserController::class, 'destroy']);
 
+Route::get('/address', [CustomerController::class, 'index']);
+// Route::post('/address', [CustomerController::class, 'insert']);
+Route::get('/address/{id}', [CustomerController::class, 'edit']);
+Route::put('/address/update', [CustomerController::class, 'update']);
+// Route::delete('/address/delete/{id}', [CustomerController::class, 'destroy']);
+
+Route::get('/delivery', [OrderController::class, 'read']);
+Route::post('/delivery', [OrderController::class, 'create']);
+Route::get('/delivery/{id}', [OrderController::class, 'editt']);
+Route::put('/delivery/update', [OrderController::class, 'updates']);
+Route::delete('/delivery/delete/{id}', [OrderController::class, 'hapus']);
+
 // Route::get('/produk', [productController::class, 'index']);
 // Route::get('/produk/add', [productController::class, 'add']);
 // Route::post('/produk/insert', [productController::class, 'insert']);
