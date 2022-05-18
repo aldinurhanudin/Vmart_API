@@ -17,7 +17,7 @@ class CustomerController extends Controller
 
     public function detail(){
         $data = [
-            "pelanggan" => customer::select('delivery_data')->get(),
+            "pelanggan" => customer::select('address')->get(),
 
         ];
 
@@ -32,11 +32,11 @@ class CustomerController extends Controller
 
     // }
 
-    public function edit($id){
+    public function edit($user_id){
         $data = [
 
-            "edit" => customer::where("id", $id)->first(),
-            "customers" => customer::where("id", "!=" , $id)->get(),
+            "edit" => customer::where("user_id", $user_id)->first(),
+            "customers" => customer::where("user_id", "!=" , $user_id)->get(),
         ];
 
         return response()->json(['messege' => 'request success', 'data' => $data],200);
@@ -46,9 +46,9 @@ class CustomerController extends Controller
     public function update(Request $request){
 
        // dd($request);
-        $address = customer::where("id", $request->id)->first();
+        $address = customer::where("user_id", $request->user_id)->first();
         if ($address) {
-            customer::where("id", $request->id)->update([
+            customer::where("user_id", $request->user_id)->update([
                 // "name" => $request->name,
                 // "phone_number" => $request->phone_number,
                 "address" => $request->address,
