@@ -90,7 +90,8 @@ Route::delete('/order/{id}', [OrderController::class, 'destroy']);
 
 
 Route::get('/profile', [UserController::class, 'index']);
-Route::post('/profile', [UserController::class, 'insert']);
+//Route::post('/profile', [UserController::class, 'insert']);
+Route::post('/register', [UserController::class, 'insert']);
 Route::get('/profile/{id}', [UserController::class, 'edit']);
 Route::put('/profile/update', [UserController::class, 'update']);
 Route::get('/profile/delete/{id}', [UserController::class, 'destroy']);

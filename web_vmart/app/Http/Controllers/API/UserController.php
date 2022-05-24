@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 use App\Models\user;
+use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -42,15 +43,15 @@ class USerController extends Controller
     //     //return redirect()->route('profile')->with('pesan','data berhasil di tambahkan');
     //     return response()->json(['messege' => 'request success'],200);
     // }
-    public function insert(Request $request){
+    // public function insert(Request $request){
 
 
 
 
-        $data = user::create($request->all());
-        return response()->json(['messege' => 'request success', 'data' => $data],200);
+    //     $data = user::create($request->all());
+    //     return response()->json(['messege' => 'request success', 'data' => $data],200);
 
-    }
+    // }
 
     public function edit($id){
         $data = [
@@ -91,6 +92,40 @@ class USerController extends Controller
 
         return response()->json('Program deleted successfully');
         //  return redirect("/kategori");
+    }
+
+    public function insert(Request $request){
+
+        $user = new user;
+
+       // $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->username = $request->username;
+        $user->role = 'customer';
+        //$user->user_id = $request->user_id;
+
+        // $order->password = bcrypt("walisantri" . $request->no_hp);
+        // $order->order_status = 1;
+        // $order->payment_method = 1;
+
+
+        $user->save();
+
+        $customer = new customer;
+        //$product = new product;
+
+        $customer->user_id = $user->id;
+        $customer->name = $user->username;
+        $customer->phone_number = $request->phone_number;
+        $customer->address = $request->address;
+
+        $customer->save();
+
+
+        // $data = order::create($request->all());
+        return response()->json(['messege' => 'request success', 'data' => $user, $customer],200);
+
     }
 
 }
