@@ -41,7 +41,7 @@ class ProductController extends Controller
 
     public function edit($id){
         $data = [
-            "edit" => product::where("id", $id)->first(),
+            "edit" => product::where("id", decrypt($id))->first(),
             "kategori" => product_category::orderBy("name", "DESC")->get()
 
         ];
@@ -145,7 +145,7 @@ class ProductController extends Controller
     public function detail($id){
         $data = [
             "products" => product::orderBy("id", "DESC")->get(),
-            "produk" => product::where("id", $id)->first(),
+            "produk" => product::where("id", decrypt($id))->first(),
             "kategori" => product_category::orderBy("name", "DESC")->get(),
             "order_items" => order_item::orderBy("id", "DESC")->get()
         ];
