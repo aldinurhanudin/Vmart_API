@@ -47,115 +47,140 @@ use Carbon\Carbon;
 @section('content')
 <div class="row">
 
-        <div class="col-md-8">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Pesanan</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </div>
+    <div class="col-md-8">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Pesanan</h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fa fa-times"></i>
+                    </button>
                 </div>
-                <div class="box-body">
-                    <table id="" class="table table-hover">
-                        <thead>
+            </div>
+            <div class="box-body">
+                <table id="" class="table table-hover">
+                    <thead>
 
 
 
 
-                            <tr>
-                                <th>Data Order</th>
-                                <th></th>
-                                <th>Pesanan</th>
-                            </tr>
+                        <tr>
+                            <th>Data Order</th>
+                            <th></th>
+                            <th>Pesanan</th>
+                        </tr>
 
 
-                        </thead>
+                    </thead>
 
-                        <tbody>
+                    <tbody>
 
-                            <tr >
-                               <td >Nomer</td>
-                               <td ></td>
-                               <td >{{$detail->order_number}}</td>
-                            </tr>
-                            <tr >
-                                <td >Tanggal</td>
-                                <td ></td>
-                                <td >@if(empty($detail->order_date))
-                                 <i>
-                                     <b>NULL</b>
-                                 </i>
-                                 @else
-                                 {{ Carbon::createFromFormat('Y-m-d H:i:s', $detail->order_date)->isoFormat('dddd, D MMMM Y H:mm:s') }}</a>
-                                 @endif</td>
-                                {{-- <td >{{ $detail->payment_date }}</td> --}}
-                             </tr>
-                            <tr >
-                               <td >Item</td>
-                               <td ></td>
-                               <td >{{$detail->order_status}}</td>
-                            </tr>
-                            <tr >
-                               <td >Harga</td>
-                               <td ></td>
-                               <td >{{$detail->total_price}}</td>
-                            </tr>
-                            <tr >
-                               <td >Methode Pembayaran</td>
-                               <td ></td>
-                               <td >@if(empty($detail->payment_method))
-                                <span>tranfer bank</span>
-                                @elseif($detail->order_status !=2)
-                                <span >COD</span>
-                                @elseif($detail->order_status !=1)
-                                <span >dikonfirmasi</span>
-                                @endif
-                            </tr>
+                        <tr >
+                            <td >Nomer</td>
+                            <td ></td>
 
-                            <tr >
-                               <td >Status</td>
-                               <td ></td>
-                               <td >@if(empty($detail->order_status))
-                                <span class="badge bg-green">menunggu pembayaran</span>
-                                @elseif($detail->order_status !=2)
-                                <span class="badge bg-green">menunggu pembayaran</span>
-                                @elseif($detail->order_status !=1)
-                                <span class="badge bg-green">dikonfirmasi</span>
+                            <td>
+                                @if(empty($detail->order_number))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ $detail->order_number }}
                                 @endif
                             </td>
-                               <td >{{ $detail->confirmed_date }}</td>
+                        </tr>
+                        <tr >
+                            <td >Tanggal</td>
+                            <td ></td>
+                            <td >@if(empty($detail->order_date))
+                                <i>
+                                    <b>NULL</b>
+                                </i>
+                                @else
+                                {{ Carbon::createFromFormat('Y-m-d H:i:s', $detail->order_date)->isoFormat('dddd, D MMMM Y H:mm:s') }}</a>
+                                @endif</td>
+                                {{-- <td >{{ $detail->payment_date }}</td> --}}
                             </tr>
+                            <tr >
+                                <td >Item</td>
+                                <td ></td>
+                                <td>
+                                    @if(empty($detail->order_status))
+                                    <i>
+                                        <b>NULL</b>
+                                    </i>
+                                    @else
+                                    {{ $detail->order_status }}
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr >
+                                <td >Harga</td>
+                                <td ></td>
+                                <td>
+                                    @if(empty($detail->total_price))
+                                    <i>
+                                        <b>NULL</b>
+                                    </i>
+                                    @else
+                                    {{ $detail->total_price}}
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr >
+                                <td >Methode Pembayaran</td>
+                                <td ></td>
+                                <td >@if(empty($detail->payment_method))
+                                    <span>tranfer bank</span>
+                                    @elseif($detail->order_status !=2)
+                                    <span >COD</span>
+                                    @elseif($detail->order_status !=1)
+                                    <span >dikonfirmasi</span>
+                                    @endif
+                                </tr>
+
+                                <tr >
+                                    <td >Status</td>
+                                    <td ></td>
+                                    <td >@if(empty($detail->order_status))
+                                        <span class="badge bg-green">menunggu pembayaran</span>
+                                        @elseif($detail->order_status !=2)
+                                        <span class="badge bg-green">menunggu pembayaran</span>
+                                        @elseif($detail->order_status !=1)
+                                        <span class="badge bg-green">dikonfirmasi</span>
+                                        @endif
+                                    </td>
+                                    <td >{{ $detail->confirmed_date }}</td>
+                                </tr>
 
 
 
-                            <td >
-                                <div class="card-footer">
-                                    <form action="http://localhost/toko-sayur/index.php/admin/orders/status" method="POST">
-                                      <input type="hidden" name="order" value="12">
-                                      <div class="row">
-                                        <div class="col-md-10">
-                                          <div class="form-group">
-                                                                  <select class="form-control" id="status" name="status">
-                                                <option value="2" >Dalam proses</option>
-                                                <option value="3" >Dalam pengiriman</option>
-                                                <option value="4" >Selesai</option>
-                                                <option value="5" >Batalkan</option>
-                                              </select>
-                                                              </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                          <div class="text-right">
-                                            <input type="submit" value="OK" class="btn btn-md btn-primary">
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </form>
-                                  </div>
+                                <td >
+                                    <div class="card-footer">
+                                        <form action="http://localhost/toko-sayur/index.php/admin/orders/status" method="POST">
+                                            <input type="hidden" name="order" value="12">
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="status" name="status">
+                                                            <option value="2" >Dalam proses</option>
+                                                            <option value="3" >Dalam pengiriman</option>
+                                                            <option value="4" >Selesai</option>
+                                                            <option value="5" >Batalkan</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="text-right">
+                                                        <input type="submit" value="OK" class="btn btn-md btn-primary">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </td>
 
@@ -168,7 +193,7 @@ use Carbon\Carbon;
 
 
 
-                <!-- /.box-body -->
+        <!-- /.box-body -->
 
 
 
@@ -192,20 +217,21 @@ use Carbon\Carbon;
                                 <tbody>
 
                                     <tr >
-                                       <td >Nama</td>
-                                       <td ></td>
-                                       <td >{{$detail->getCustomer->name}}</td>
+                                        <td >Nama</td>
+                                        <td ></td>
+                                        <td >{{$detail->getCustomer->name}}</td>
+
                                     </tr>
 
                                     <tr >
-                                       <td >No.hp</td>
-                                       <td ></td>
-                                       <td >{{$detail->getCustomer->phone_number}}</td>
+                                        <td >No.hp</td>
+                                        <td ></td>
+                                        <td >{{$detail->getCustomer->phone_number}}</td>
                                     </tr>
                                     <tr >
-                                       <td >alamat</td>
-                                       <td ></td>
-                                       <td >{{$detail->getCustomer->address}}</td>
+                                        <td >alamat</td>
+                                        <td ></td>
+                                        <td >{{$detail->getCustomer->address}}</td>
                                     </tr>
 
 
@@ -245,25 +271,25 @@ use Carbon\Carbon;
                                 <tbody>
 
                                     <tr >
-                                       <td >Gambar</td>
-                                       <td ></td>
-                                       <td ><img class="img img-fluid rounded" style="width: 60px; height: 60px;"  src="http://localhost/toko-sayur/assets/uploads/products/https://bit.ly/3rwd97G"></td>
-                                       {{-- <td >{{$products->picture_name}}</td> --}}
+                                        <td >Gambar</td>
+                                        <td ></td>
+                                        <td ><img class="img img-fluid rounded" style="width: 60px; height: 60px;"  src="http://localhost/toko-sayur/assets/uploads/products/https://bit.ly/3rwd97G"></td>
+                                        {{-- <td >{{$products->picture_name}}</td> --}}
                                     </tr>
                                     <tr >
-                                       <td >Produk</td>
-                                       <td ></td>
-                                       <td >{{$products->name}}</td>
+                                        <td >Produk</td>
+                                        <td ></td>
+                                        <td >{{$products->name}}</td>
                                     </tr>
                                     <tr >
-                                       <td >Jumlah Beli</td>
-                                       <td ></td>
-                                       <td >{{$detail->total_items}}</td>
+                                        <td >Jumlah Beli</td>
+                                        <td ></td>
+                                        <td >{{$detail->total_items}}</td>
                                     </tr>
                                     <tr >
-                                       <td >Harga Satuan</td>
-                                       <td ></td>
-                                       <td >{{$products->price}}</td>
+                                        <td >Harga Satuan</td>
+                                        <td ></td>
+                                        <td >{{$products->price}}</td>
                                     </tr>
 
 
@@ -277,43 +303,43 @@ use Carbon\Carbon;
                     </div>
                 </div>
 
-                        </div>
+            </div>
 
 
 
 
 
-                        <!-- /.box-header -->
-                        {{-- <div class="box-body">
-                            <table id="" class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <td>
-                                            <input type="file" class="form-control" name="picture_name" id='picture_name' placeholder="" value="">
-                                            <div class="text-danger">
-                                                @error('picture_name')
-                                                {{ $message }}
-                                                @enderror
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </thead>
+            <!-- /.box-header -->
+            {{-- <div class="box-body">
+                <table id="" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>
+                                <input type="file" class="form-control" name="picture_name" id='picture_name' placeholder="" value="">
+                                <div class="text-danger">
+                                    @error('picture_name')
+                                    {{ $message }}
+                                    @enderror
+                                </div>
+                            </td>
+                        </tr>
+                    </thead>
 
-                                <tbody>
+                    <tbody>
 
-                                </tbody>
-                            </table>
-                        </div> --}}
-                        {{-- <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Oke</button>
-                        </div> --}}
-                    </div>
+                    </tbody>
+                </table>
+            </div> --}}
+            {{-- <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Oke</button>
+            </div> --}}
+        </div>
 
 
-                </div>
+    </div>
 
-            </form>
+</form>
 
-            @endsection
+@endsection
 
 
