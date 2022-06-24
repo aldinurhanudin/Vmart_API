@@ -53,7 +53,7 @@ class ProductCategoryController extends Controller
 
         return response()->json(['messege' => 'request success', 'data' => $product_category],200);
     }
-    
+
     public function destroy($id)
     {
         $product_category = product_category::find($id);
