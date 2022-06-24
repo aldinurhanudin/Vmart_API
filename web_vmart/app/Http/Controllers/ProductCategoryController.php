@@ -56,6 +56,7 @@ class ProductCategoryController extends Controller
         ]);
 
        // return response()->json(['messege' => 'request success'],200);
+       // return response()->json(['messege' => 'request success'],200);
         return redirect("/kategori");
     }
 
